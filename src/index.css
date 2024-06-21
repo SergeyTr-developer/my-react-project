@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Open-Sans', 'Inter', sans-serif;
+  background-color: #fbf8ec;
+}
+
+.container {
+  max-width: 1208px;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+  display: inline-block;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(65, 65, 65);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  padding-top: 80px;
+}
+
+.mb {
+  margin-bottom: 120px;
+}
+
+.active {
+  color: rgb(59 130 246);
+}
