@@ -48,7 +48,6 @@ const Cards = () => {
             />
           ))}
         </div>
-        <div></div>
       </section>
 
       <section className="mb">
@@ -83,7 +82,6 @@ const Cards = () => {
             />
           ))}
         </div>
-        <div></div>
       </section>
 
       <section className="mb">
