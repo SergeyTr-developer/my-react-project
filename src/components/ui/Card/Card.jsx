@@ -12,18 +12,42 @@ import styles from './Card.module.css'
  * @param {number} [props.details.rating] - Рейтинг карточки (необязательно).
  * @param {string} props.details.imgSrc - Путь к изображению.
  * @param {string} [props.details.category] - Категория карточки.
+ * @param {boolean} props.isFavorite - Карточка добавлена в сохраненки или нет (необязательно).
  * @returns {JSX.Element} Элемент JSX.
  */
 export const Card = (props) => {
-  const { title, description, price, card, regular, rating, imgSrc, category } =
-    props.details
+  const {
+    id,
+    title,
+    description,
+    price,
+    card,
+    regular,
+    rating,
+    imgSrc,
+    category,
+    isFavorite,
+  } = props.details
+
+  const { onToggleFavorite } = props
+
+  // Обработчик клика на иконку сердечка
+  const handleFavorite = (event) => {
+    event.stopPropagation() // Предотвр. всплытие события
+    onToggleFavorite(id)
+  }
 
   return (
     <>
       <div className={styles['card-products']}>
         <div className={styles['pic-wrap']}>
           <img src={imgSrc} alt={title} />
-          <button className={styles['btn-icon']}>
+          <button
+            onClick={handleFavorite}
+            className={`${styles['btn-icon']} ${
+              isFavorite ? styles['btn-icon-active'] : ''
+            }`}
+          >
             <svg
               width="22"
               height="20"

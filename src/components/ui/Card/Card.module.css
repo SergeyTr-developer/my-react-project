@@ -137,3 +137,12 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+.btn-icon-active {
+  background: #f63;
+  opacity: 0.8;
+}
+
+.btn-icon-active svg path {
+  stroke: #fff;
+}

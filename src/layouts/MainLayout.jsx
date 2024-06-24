@@ -3,12 +3,12 @@ import Header from '../components/ui/Header/Header'
 
 const MainLayout = () => {
   return (
-    <div>
+    <>
       <Header />
       <>
         <Outlet />
       </>
-    </div>
+    </>
   )
 }
 
