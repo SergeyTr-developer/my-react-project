@@ -1,16 +1,17 @@
 import { Card } from '../components/ui/Card/Card.jsx'
-import { initialProducts } from '../../data.js'
+import useProductsStore from '../store/useProductsStore.js'
 import styles from '../components/ui/Card/Card.module.css'
 
 const Cards = () => {
-  const salesItems = initialProducts.filter(
-    (product) => product.category === 'Stock'
-  )
-  const newItems = initialProducts.filter(
+  // Стор для работы с продуктами
+  const { products, setFavorite } = useProductsStore()
+
+  const salesItems = products.filter((product) => product.category === 'Stock')
+  const newItems = products.filter(
     (product) => product.category === 'New items'
   )
 
-  const purchasedBefore = initialProducts.filter(
+  const purchasedBefore = products.filter(
     (product) => product.category === 'Purchased before'
   )
   return (
@@ -40,7 +41,11 @@ const Cards = () => {
         </div>
         <div className={styles['cards-flex-wraper']}>
           {salesItems.map((product) => (
-            <Card key={product?.id} details={product} />
+            <Card
+              key={product?.id}
+              details={product}
+              onToggleFavorite={setFavorite}
+            />
           ))}
         </div>
         <div></div>
@@ -71,7 +76,11 @@ const Cards = () => {
         </div>
         <div className={styles['cards-flex-wraper']}>
           {newItems.map((product) => (
-            <Card key={product?.id} details={product} />
+            <Card
+              key={product?.id}
+              details={product}
+              onToggleFavorite={setFavorite}
+            />
           ))}
         </div>
         <div></div>
@@ -102,10 +111,13 @@ const Cards = () => {
         </div>
         <div className={styles['cards-flex-wraper']}>
           {purchasedBefore.map((product) => (
-            <Card key={product?.id} details={product} />
+            <Card
+              key={product?.id}
+              details={product}
+              onToggleFavorite={setFavorite}
+            />
           ))}
         </div>
-        <div></div>
       </section>
     </main>
   )
