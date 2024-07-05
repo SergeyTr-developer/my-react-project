@@ -1,0 +1,56 @@
+.alert-wraper {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+  padding: 20px 28px;
+  border-radius: 4px;
+}
+
+.alert-variant-neutral {
+  background-color: rgb(254 215 170);
+  opacity: 1;
+}
+
+.alert-variant-info {
+  background-color: #bfdbfe;
+  opacity: 1;
+}
+
+.alert-variant-warning {
+  opacity: 1;
+
+  background-color: #fde68a;
+}
+
+.alert-variant-success {
+  opacity: 1;
+
+  background-color: #6ee7b7;
+}
+
+.alert-variant-error {
+  opacity: 1;
+
+  background-color: #fecdd3;
+}
+
+.translate-y-0 {
+  transform: translateY(0);
+}
+
+.translate-y-96 {
+  transform: translateY(24rem);
+}
+
+.alert-button {
+  border: none;
+  background-color: transparent;
+  color: rgb(65, 65, 65);
+  font-weight: bold;
+  font-size: 100%;
+  cursor: pointer;
+}

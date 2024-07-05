@@ -32,7 +32,7 @@ export const Card = (props) => {
   const { onToggleFavorite } = props
 
   // Обработчик клика на иконку сердечка
-  const handleFavorite = (event) => {
+  const handleFavorite = () => {
     event.stopPropagation() // Предотвр. всплытие события
     onToggleFavorite(id)
   }
