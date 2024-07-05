@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card } from '../components/ui/Card/Card'
 import { Alert } from '../components/ui/Alert/Alert'
 import { DoubleSlider } from '../components/ui/DoubleSlider/DoubleSlider'
@@ -9,7 +9,11 @@ import styles from '../styles/pages/FavoritesList.module.css'
 const FavoritesList = () => {
   const { getFavoriteProducts, setFavorite, getProductById } =
     useProductsStore()
-  const favoritesProducts = getFavoriteProducts()
+
+  // Локальное состояние для избранных продуктов
+  const [favoritesProducts, setFavoritesProducts] = useState(
+    getFavoriteProducts()
+  )
 
   // Стейт для скрытия/показа и передачи сообщения в Alert
   const [alertState, setAlertState] = useState({
@@ -36,6 +40,11 @@ const FavoritesList = () => {
         : 'Товар добавлен в избранное',
     })
   }
+
+  useEffect(() => {
+    // Обновляем локальное состояние при изменении избранных продуктов
+    setFavoritesProducts(getFavoriteProducts())
+  }, [getFavoriteProducts])
 
   return (
     <section>
@@ -93,11 +102,7 @@ const FavoritesList = () => {
                   ))}
               </div>
               <div>
-                <SwitchToggle
-                  hasFavoritesProducts={
-                    !!favoritesProducts && favoritesProducts.length > 0
-                  }
-                />
+                <SwitchToggle />
               </div>
 
               <button className={styles['options-filter-button']}>
@@ -165,9 +170,7 @@ const FavoritesList = () => {
                   ))
                 ) : (
                   <div className={styles['wrapper-no_products']}>
-                    <span className={styles['fw-bold']}>
-                      В избранном пусто
-                    </span>
+                    <span className={styles['fw-bold']}>В избранном пусто</span>
                     <span>Добавляйте товары с помощью 🧡</span>
                   </div>
                 )}
