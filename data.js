@@ -2,7 +2,7 @@
 export const initialProducts = [
   {
     id: '0',
-    name: ' блинчики с мясом',
+    name: ' Блинчики ',
     category: 'Stock',
     description: 'Г/Ц Блинчики с мясом вес, Россия',
     rating: '2.0',
@@ -14,7 +14,7 @@ export const initialProducts = [
   },
   {
     id: '1',
-    name: 'молоко простоквашино',
+    name: 'Молоко',
     category: 'Stock',
     description: 'Молоко ПРОСТОКВАШИНО паст. питьевое цельное отборное...',
     rating: '3.0',
@@ -26,7 +26,7 @@ export const initialProducts = [
   },
   {
     id: '2',
-    name: 'колбаса сырокопченая',
+    name: 'Колбаса',
     category: 'Stock',
     description: 'Колбаса сырокопченая МЯСНАЯ ИСТОРИЯ Сальчичон и Тоскан...',
     rating: '5.0',
@@ -38,7 +38,7 @@ export const initialProducts = [
   },
   {
     id: '3',
-    name: 'сосиски вареные',
+    name: 'Сосиски',
     category: 'Stock',
     description: 'Сосиски вареные МЯСНАЯ ИСТОРИЯ Молочные и С сыро...',
     rating: '4.5',
@@ -50,7 +50,7 @@ export const initialProducts = [
   },
   {
     id: '4',
-    name: 'колбаса Черкизово премиум',
+    name: 'Колбаса премиум',
     category: 'New items',
     description: 'Колбаса сырокопченая, Черкизово премиум',
     rating: '2.0',
@@ -61,7 +61,7 @@ export const initialProducts = [
   },
   {
     id: '5',
-    name: 'колбаса сырокопченая',
+    name: 'Колбаса',
     category: 'New items',
     description: 'Колбаса сырокопченая МЯСНАЯ ИСТОРИЯ Сальчичон и Тоскан...',
     rating: '5.0',
@@ -72,7 +72,7 @@ export const initialProducts = [
   },
   {
     id: '6',
-    name: 'сосиски вареные',
+    name: 'Сосиски',
     category: 'New items',
     description: 'Сосиски вареные МЯСНАЯ ИСТОРИЯ Молочные и С сыро...',
     rating: '4.0',
@@ -83,7 +83,7 @@ export const initialProducts = [
   },
   {
     id: '7',
-    name: 'молоко простоквашино',
+    name: 'Молоко',
     category: 'New items',
     description: 'Молоко ПРОСТОКВАШИНО паст. питьевое цельное отборное...',
     rating: '3.0',
@@ -94,7 +94,7 @@ export const initialProducts = [
   },
   {
     id: '8',
-    name: 'ветчина питерская',
+    name: 'Ветчина',
     category: 'Purchased before',
     description: 'Ветчина Питерская,  ОТБОРНЫЕ ПРОДУКТЫ',
     rating: '2.0',
@@ -105,7 +105,7 @@ export const initialProducts = [
   },
   {
     id: '9',
-    name: 'сосиски вареные',
+    name: 'Сосиски',
     category: 'Purchased before',
     description: 'Сосиски вареные МЯСНАЯ ИСТОРИЯ Молочные и С сыро...',
     rating: '4.0',
@@ -116,7 +116,7 @@ export const initialProducts = [
   },
   {
     id: '10',
-    name: 'колбаса Черкизово премиум',
+    name: 'Колбаса премиум',
     category: 'Purchased before',
     description: 'Колбаса сырокопченая, Черкизово премиум',
     rating: '2.0',
@@ -127,7 +127,7 @@ export const initialProducts = [
   },
   {
     id: '11',
-    name: 'молоко простоквашино',
+    name: 'Молоко',
     category: 'Purchased before',
     description: 'Молоко ПРОСТОКВАШИНО паст. питьевое цельное отборное...',
     rating: '3.0',
