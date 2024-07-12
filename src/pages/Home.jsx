@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Card } from '../components/ui/Card/Card.jsx'
 import { Alert } from '../components/ui/Alert/Alert.jsx'
+import { Banner } from '../components/ui/Banner/Banner.jsx'
+
 import useProductsStore from '../store/useProductsStore.js'
 import styles from '../components/ui/Card/Card.module.css'
 
@@ -42,6 +44,7 @@ const Home = () => {
 
   return (
     <>
+      <Banner />
       <section className="mb-120">
         <div className="container">
           <div className="heading">
@@ -152,12 +155,15 @@ const Home = () => {
           </div>
         </div>
       </section>
+
       <Alert
         variant="neutral"
         subtitle={alertState?.message}
         isOpen={alertState?.isOpen}
         onClose={handleCloseAlert}
       />
+
+    
     </>
   )
 }

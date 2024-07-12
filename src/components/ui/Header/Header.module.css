@@ -1,6 +1,8 @@
 header {
   box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.1);
   background-color: #ffff;
+  position: relative;
+  z-index: 1000;
 }
 
 a {
@@ -44,6 +46,9 @@ a {
 
 .mr-8 {
   margin: 0px 8px;
+}
+.pl-16 {
+  padding-left: 16px;
 }
 
 .search-wrapper {
@@ -126,10 +131,13 @@ a {
   align-items: center;
   gap: 10px;
   font-size: 100%;
-  color: #fff;
-  background-color: #f63;
+  color: rgb(35, 35, 35);
+  background-color: transparent;
   border: none;
-  padding: 8px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.pl-10 {
+  padding-left: 10px;
 }
