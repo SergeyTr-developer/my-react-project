@@ -8,6 +8,10 @@ body {
   background-color: #fbf8ec;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .container {
   max-width: 1208px;
   margin: 0 auto;
@@ -44,4 +48,3 @@ img {
 .active svg path {
   stroke: #f63;
 }
-
