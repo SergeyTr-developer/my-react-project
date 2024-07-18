@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Header.module.css'
 import useProductsStore from '../../../store/useProductsStore'
 import { AuthModal } from '../AuthModal/AuthModal'
@@ -21,6 +21,20 @@ const Header = () => {
   const handleOpenModal = () => {
     setIsModal(true)
   }
+
+  // Использование useEffect для управления классом 'no-scroll'
+  useEffect(() => {
+    if (isModal) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove('no-scroll')
+    }
+
+    // Очистка при размонтировании компонента
+    return () => {
+      document.body.classList.remove('no-scroll')
+    }
+  }, [isModal]) // Зависимость от состояния isModal
 
   //функцию которая скрывает модалку
   const handleCloseModal = () => {
