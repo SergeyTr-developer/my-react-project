@@ -2,10 +2,11 @@ import MaskedInput from 'react-text-mask'
 import { useState } from 'react'
 import styles from './FormRegistration.module.css'
 import useForm from '../../../hooks/useForm'
+import { useAuth } from '../../../hooks/useAuth'
 import Input from '../Input/Input'
 
 export const FormRegistration = ({ onClose }) => {
-  const { formValues, handleInput, formErrors } = useForm({
+  const { formValues, handleInput, formErrors, resetForm } = useForm({
     phone: '',
     surname: '',
     name: '',
@@ -13,7 +14,10 @@ export const FormRegistration = ({ onClose }) => {
     repeatPassword: '',
   })
 
-  console.log(formValues)
+  console.log('данные регистрации', formValues)
+
+  const { onRegister } = useAuth()
+
   // Состояние для видимости пароля
   const [passwordVisible, setPasswordVisible] = useState(false)
 
@@ -27,6 +31,18 @@ export const FormRegistration = ({ onClose }) => {
   // Обработчик для переключения видимости пароля
   const toggleRepeatPassword = () => {
     setRepeatPassword(!repeatPassword)
+  }
+
+  // Функция для обработки успешной отправки формы
+  const handleFormSubmit = (event) => {
+    event.preventDefault()
+
+    if (formValues.password === formValues.repeatPassword) {
+      onRegister(formValues)
+      onClose() //Закрываем modal
+    }
+    resetForm() // Сбрасываем форму
+    // setAlertOpen(true); // Показываем Alert
   }
 
   return (
@@ -57,7 +73,10 @@ export const FormRegistration = ({ onClose }) => {
         <dialog className={styles['dialog']}>
           <div className={styles['form-content-column']}>
             <h3 className={styles['form-title']}>Регистрация</h3>
-            <form className={styles['registration-form-column']}>
+            <form
+              onSubmit={handleFormSubmit}
+              className={styles['registration-form-column']}
+            >
               <div className={styles['container-form-column']}>
                 <div className={styles['tel-flex-wrap']}>
                   <label htmlFor="tel">
@@ -86,7 +105,7 @@ export const FormRegistration = ({ onClose }) => {
                       /\d/,
                       /\d/,
                     ]}
-                    // className={styles['form-input']}
+                    
                     className={`${styles['form-input']} ${
                       formErrors.phone ? styles['error-border'] : ''
                     }`}
@@ -277,7 +296,7 @@ export const FormRegistration = ({ onClose }) => {
                   )}
                 </div>
               </div>
-              <button className={styles['login-button']}>
+              <button type="submit" className={styles['login-button']}>
                 Зарегистрироваться
               </button>
             </form>

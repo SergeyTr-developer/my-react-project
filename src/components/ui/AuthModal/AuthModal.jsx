@@ -1,5 +1,5 @@
 import MaskedInput from 'react-text-mask'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FormRegistration } from '../FormRegistration/FormRegistration'
 import styles from './AuthModal.module.css'
 import useForm from '../../../hooks/useForm'
@@ -10,7 +10,8 @@ export const AuthModal = ({ onClose }) => {
     password: '',
   })
 
-  console.log(formValues)
+  console.log('данные авторизации', formValues)
+
   // Состояния валидности телефона
   const [isTelValid, setIsTelValid] = useState(false)
 
@@ -22,6 +23,21 @@ export const AuthModal = ({ onClose }) => {
   const handleRegistrationOpen = () => {
     setIsRegistrationForm(true)
   }
+
+  useEffect(() => {
+    // Добавление обработчика событий при монтировании компонента
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+
+    // Удаление обработчика событий при размонтировании компонента
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [onClose])
 
   // Состояние для видимости пароля
   const [passwordVisible, setPasswordVisible] = useState(false)
@@ -104,7 +120,7 @@ export const AuthModal = ({ onClose }) => {
                           /\d/,
                           /\d/,
                         ]}
-                        // className={styles['tel-input']}
+                        
                         className={`${styles['tel-input']} ${
                           formErrors.phone ? styles['error-border'] : ''
                         }`}
@@ -127,7 +143,7 @@ export const AuthModal = ({ onClose }) => {
                       <label htmlFor="password">Пароль</label>
                       <div className={styles['password-wrapper']}>
                         <input
-                          // className={styles['password-input']}
+                         
                           className={`${styles['password-input']} ${
                             formErrors.password ? styles['error-border'] : ''
                           }`}

@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import styles from './Header.module.css'
 import useProductsStore from '../../../store/useProductsStore'
 import { AuthModal } from '../AuthModal/AuthModal'
@@ -14,6 +14,8 @@ const Header = () => {
 
   const navigate = useNavigate() // хук для роутинга
 
+  const bodyRef = useRef(document.body)
+
   // Стейт для скрытия/показа модалки
   const [isModal, setIsModal] = useState(false)
 
@@ -25,14 +27,14 @@ const Header = () => {
   // Использование useEffect для управления классом 'no-scroll'
   useEffect(() => {
     if (isModal) {
-      document.body.classList.add('no-scroll')
+      bodyRef.current.classList.add('no-scroll')
     } else {
-      document.body.classList.remove('no-scroll')
+      bodyRef.current.classList.remove('no-scroll')
     }
 
     // Очистка при размонтировании компонента
     return () => {
-      document.body.classList.remove('no-scroll')
+      bodyRef.current.classList.remove('no-scroll')
     }
   }, [isModal]) // Зависимость от состояния isModal
 

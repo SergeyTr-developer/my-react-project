@@ -15,9 +15,12 @@ const validators = {
   surname: (value) => {
     if (!value) return 'Поле, обязательное для заполнения'
 
+    // Удаление начальных и конечных пробелов
+    const trimmedValue = value.trim()
+
     const regexText = /^[^!>?<_\-$№#@]+$/
 
-    if (!regexText.test(value))
+    if (!regexText.test(trimmedValue))
       return 'Текст не должен содержать символов !>?<_-$№#@'
 
     return null
@@ -26,9 +29,12 @@ const validators = {
   name: (value) => {
     if (!value) return 'Поле, обязательное для заполнения'
 
+    // Удаление начальных и конечных пробелов
+    const trimmedValue = value.trim()
+
     const regexText = /^[^!>?<_\-$№#@]+$/
 
-    if (!regexText.test(value))
+    if (!regexText.test(trimmedValue))
       return 'Текст не должен содержать символов !>?<_-$№#@'
 
     return null
@@ -42,7 +48,10 @@ const validators = {
   email: (value) => {
     if (!value) return 'field is required'
 
-    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value))
+    // Удаление начальных и конечных пробелов
+    const trimmedValue = value.trim()
+
+    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(trimmedValue))
       return 'Invalid email'
 
     return null
@@ -63,10 +72,13 @@ const validators = {
   phone: (value) => {
     if (!value) return 'Поле, обязательное для заполнения'
 
+    // Удаление начальных и конечных пробелов
+    const trimmedValue = value.trim()
+
     // Маска для телефона: +7(XXX) XXX-XX-XX
     const regex = /^\+7\(\d{3}\) \d{3}-\d{2}-\d{2}$/
 
-    if (!regex.test(value)) return 'Неправильный номер телефона'
+    if (!regex.test(trimmedValue)) return 'Неправильный номер телефона'
 
     return null
   },
@@ -79,7 +91,11 @@ const validators = {
   password: (value) => {
     if (!value) return 'Поле, обязательное для заполнения'
 
-    if (value.length < 8) return 'Пароль должен быть длиной не менее 8 символов'
+    // Удаление начальных и конечных пробелов
+    const trimmedValue = value.trim()
+
+    if (trimmedValue.length < 8)
+      return 'Пароль должен быть длиной не менее 8 символов'
 
     return null
   },
@@ -87,7 +103,11 @@ const validators = {
   repeatPassword: (value) => {
     if (!value) return 'Поле, обязательное для заполнения'
 
-    if (value.length < 8) return 'Пароль должен быть длиной не менее 8 символов'
+    // Удаление начальных и конечных пробелов
+    const trimmedValue = value.trim()
+
+    if (trimmedValue.length < 8)
+      return 'Пароль должен быть длиной не менее 8 символов'
 
     return null
   },
@@ -99,7 +119,10 @@ const validators = {
   number: (value) => {
     if (!value) return 'field is required'
 
-    if (isNaN(value)) return 'Must be a number'
+    // Удаление начальных и конечных пробелов
+    const trimmedValue = value.trim()
+
+    if (isNaN(trimmedValue)) return 'Must be a number'
 
     return null
   },

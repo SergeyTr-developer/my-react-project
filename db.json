@@ -136,5 +136,15 @@
       "isFavorite": true,
       "cartQuantity": 1
     }
+  ],
+  "users": [
+    {
+      "id": "74f7",
+      "phone": "+7(908) 125-53-66",
+      "surname": "Труфанов",
+      "name": "Сергей",
+      "password": "12345678",
+      "repeatPassword": "12345678"
+    }
   ]
 }

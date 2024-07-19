@@ -1,4 +1,3 @@
-// import classNames from 'classnames'
 import { useState, useEffect } from 'react'
 import styles from './Input.module.css'
 
@@ -20,7 +19,6 @@ import styles from './Input.module.css'
  * @param {event: React.InputEvent<HTMLInputElement>} props.onInput - Событие по окончании изменения значения элемента формы.
  * @param {event: React.FocusEvent<HTMLInputElement>} props.onBlur - Событие потери фокуса вводом.
  * @param {event: React.FocusEvent<HTMLInputElement>} props.onFocus - Событие получения фокуса вводом.
- * @param {string} props.className - Дополнительные классы для стилизации компонента.
  */
 const Input = ({
   value,
@@ -38,15 +36,7 @@ const Input = ({
   onInput,
   onBlur,
   onFocus,
-  //   className,
 }) => {
-  //   const inputClasses = classNames(
-  //     'max-w-96 w-full border border-gray-300 p-2 rounded-md focus:outline-none mb-1',
-  //     disabled ? 'opacity-50 cursor-not-allowed' : '',
-  //     required && error ? 'border-rose-500' : '',
-  //     className || ''
-  //   )
-
   // Состояние для скрытия/показа пропса required (обязательность заполнения поля)
   const [isUserTyping, setIsUserTyping] = useState(false)
 
@@ -123,7 +113,6 @@ const Input = ({
           onInput={handleInput}
           onBlur={handleBlur}
           onFocus={handleFocus}
-          // className={inputClasses}
         />
         {error && <span className={styles['error-title']}>{error}</span>}
       </div>
