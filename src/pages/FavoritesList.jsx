@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Card } from '../components/ui/Card/Card'
 import { Alert } from '../components/ui/Alert/Alert'
 import { DoubleSlider } from '../components/ui/DoubleSlider/DoubleSlider'
@@ -7,13 +7,17 @@ import useProductsStore from '../store/useProductsStore'
 import styles from '../styles/pages/FavoritesList.module.css'
 
 const FavoritesList = () => {
-  const { getFavoriteProducts, setFavorite, getProductById } =
+  // Достаем функцию для работы с сохраненками
+  const { getFavoriteProducts, onToggleFavorite, getProductById } =
     useProductsStore()
 
-  // Локальное состояние для избранных продуктов
-  const [favoritesProducts, setFavoritesProducts] = useState(
-    getFavoriteProducts()
-  )
+  // // Локальное состояние для избранных продуктов
+  // const [favoritesProducts, setFavoritesProducts] = useState(
+  //   getFavoriteProducts()
+  // )
+
+  // Вызываем функцию для показа сохраненок
+  const favoritesProducts = getFavoriteProducts()
 
   // Стейт для скрытия/показа и передачи сообщения в Alert
   const [alertState, setAlertState] = useState({
@@ -31,7 +35,7 @@ const FavoritesList = () => {
     // Достаем из стора поле isFavorite выбранного продукта
     const { isFavorite } = getProductById(id)
 
-    setFavorite(id) // вкл/выкл товара в сохраненки
+    onToggleFavorite(id) // вкл/выкл товара в сохраненки
 
     setAlertState({
       isOpen: true,
@@ -41,10 +45,10 @@ const FavoritesList = () => {
     })
   }
 
-  useEffect(() => {
-    // Обновляем локальное состояние при изменении избранных продуктов
-    setFavoritesProducts(getFavoriteProducts())
-  }, [getFavoriteProducts])
+  // useEffect(() => {
+  //   // Обновляем локальное состояние при изменении избранных продуктов
+  //   setFavoritesProducts(getFavoriteProducts())
+  // }, [getFavoriteProducts])
 
   return (
     <section>
@@ -165,7 +169,7 @@ const FavoritesList = () => {
                     <Card
                       key={product.id}
                       details={product}
-                      onToggleFavorite={handleFavoriteAndShowAlert}
+                      onHeartClick={handleFavoriteAndShowAlert}
                     />
                   ))
                 ) : (

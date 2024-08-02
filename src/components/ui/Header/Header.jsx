@@ -1,9 +1,9 @@
-import { useLocation, useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import styles from './Header.module.css'
 import useProductsStore from '../../../store/useProductsStore'
 import { AuthModal } from '../AuthModal/AuthModal'
+import { useAuth } from '../../../hooks/useAuth'
 
 /**
  * Компонент Шапка.
@@ -13,6 +13,8 @@ const Header = () => {
   const location = useLocation()
 
   const navigate = useNavigate() // хук для роутинга
+
+  const { user, onLogout } = useAuth()
 
   const bodyRef = useRef(document.body)
 
@@ -26,15 +28,17 @@ const Header = () => {
 
   // Использование useEffect для управления классом 'no-scroll'
   useEffect(() => {
+    const bodyLink = bodyRef.current
+
     if (isModal) {
-      bodyRef.current.classList.add('no-scroll')
+      bodyLink.classList.add('no-scroll')
     } else {
-      bodyRef.current.classList.remove('no-scroll')
+      bodyLink.classList.remove('no-scroll')
     }
 
     // Очистка при размонтировании компонента
     return () => {
-      bodyRef.current.classList.remove('no-scroll')
+      bodyLink.classList.remove('no-scroll')
     }
   }, [isModal]) // Зависимость от состояния isModal
 
@@ -53,6 +57,10 @@ const Header = () => {
     navigate(`/favorites`)
   }
 
+  // Показ страницы админ
+  const handleOpenAdmin = () => {
+    navigate(`/admin`)
+  }
   /**
    * Определяет, активна ли ссылка.
    * @param {string} path - Путь ссылки.
@@ -80,15 +88,17 @@ const Header = () => {
           </Link>
 
           <div className={styles['catalog-flex']}>
-            <button className={styles['catalog-btn_menu']}>
-              <img
-                src="../assets/products/catalog-icon _ menu.svg"
-                alt="catalog-icon_menu"
-              />
-              <span className={`${styles['mr-8']} ${styles['pl-16']}`}>
-                Каталог
-              </span>
-            </button>
+            {!user || user?.role === 'user' ? (
+              <button className={styles['catalog-btn_menu']}>
+                <img
+                  src="../assets/products/catalog-icon _ menu.svg"
+                  alt="catalog-icon_menu"
+                />
+                <span className={`${styles['mr-8']} ${styles['pl-16']}`}>
+                  Каталог
+                </span>
+              </button>
+            ) : null}
 
             <form className={styles['search-wrapper']}>
               <input
@@ -124,7 +134,6 @@ const Header = () => {
           <div className={styles['authorization-flex']}>
             <div className={styles['list-items-flex']}>
               <button
-                type="button"
                 onClick={handleOpenFavorites}
                 className={`${styles['list-items-btn']} ${
                   isActiveLink('/favorites') ? 'active' : ''
@@ -199,33 +208,86 @@ const Header = () => {
                 </svg>
                 <span>Корзина</span>
               </button>
-            </div>
 
-            <button
-              onClick={handleOpenModal}
-              className={styles['authorization-button']}
-            >
-              <div>
-                <img
-                  src="../assets/products/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
-                  alt="avatar-image"
-                />
-              </div>
-              <span>Войти</span>
-              <svg
-                className={styles['pl-10']}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="rgb(35, 35, 35)"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                width="24"
-                height="24"
+              {user?.role === 'admin' && (
+                <button
+                  onClick={handleOpenAdmin}
+                  className={`${styles['list-items-btn']} ${
+                    isActiveLink('/admin') ? 'active' : ''
+                  }`}
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 14V16C8.686 16 6 18.686 6 22H4C4 17.5817 7.58172 14 12 14ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11ZM21 17H22V22H14V17H15V16C15 14.3431 16.3431 13 18 13C19.6569 13 21 14.3431 21 16V17ZM19 17V16C19 15.4477 18.5523 15 18 15C17.4477 15 17 15.4477 17 16V17H19Z"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      strokeWidth="0.5"
+                    ></path>
+                  </svg>
+
+                  <span className="font-black">Админ</span>
+                </button>
+              )}
+            </div>
+            {!user ? (
+              <button
+                onClick={handleOpenModal}
+                className={styles['authorization-button']}
               >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
+                <div>
+                  <img
+                    src="../assets/products/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
+                    alt="avatar-image"
+                  />
+                </div>
+                <span>Войти</span>
+                <svg
+                  className={styles['pl-10']}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="rgb(35, 35, 35)"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  width="24"
+                  height="24"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            ) : (
+              <button
+                onClick={onLogout}
+                className={styles['authorization-button']}
+              >
+                <div>
+                  <img
+                    src="../assets/products/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
+                    alt="avatar-image"
+                  />
+                </div>
+                <span>{user.name}</span>
+                <svg
+                  className={styles['pl-10']}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="rgb(35, 35, 35)"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  width="24"
+                  height="24"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
       </nav>

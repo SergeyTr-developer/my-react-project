@@ -2,13 +2,21 @@ import { Routes, Route } from 'react-router-dom'
 import MainLayout from '../../layouts/MainLayout'
 import Home from '../../pages/Home'
 import CardDetail from '../../pages/CardDetail'
-import FavoritesList from "../../pages/FavoritesList";
+import FavoritesList from '../../pages/FavoritesList'
+import Admin from '../../pages/Admin'
+import PrivateRoute from './PrivateRoute'
 
 /** Массив роутов приложения */
 const routes = [
   { path: '/', element: <Home /> },
+  // { path: "admin", element: <Admin /> },
+  // Приватный маршрут для администратора
+  {
+    path: 'admin',
+    element: <PrivateRoute element={<Admin />} requiredRole="admin" />,
+  },
   { path: 'cards/:id', element: <CardDetail /> },
-  { path: "favorites", element: <FavoritesList /> },
+  { path: 'favorites', element: <FavoritesList /> },
 ]
 
 /**

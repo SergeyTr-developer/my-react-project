@@ -11,36 +11,69 @@ export const FormRegistration = ({ onClose }) => {
     surname: '',
     name: '',
     password: '',
-    repeatPassword: '',
   })
-
-  console.log('данные регистрации', formValues)
 
   const { onRegister } = useAuth()
 
   // Состояние для видимости пароля
   const [passwordVisible, setPasswordVisible] = useState(false)
 
-  const [repeatPassword, setRepeatPassword] = useState(false)
+  // Состояние для видимости повторного пароля
+  const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false)
+
+  // Состояние для хранения значения повторного пароля
+  const [repeatPassword, setRepeatPassword] = useState('')
+
+  // Состояние для отслеживания ошибок валидации
+  const [errorsRepeatPassword, setRepeatPasswordErrors] = useState({})
 
   // Обработчик для переключения видимости пароля
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible)
   }
 
-  // Обработчик для переключения видимости пароля
+  // Обработчик для переключения видимости повторного пароля
   const toggleRepeatPassword = () => {
-    setRepeatPassword(!repeatPassword)
+    setRepeatPasswordVisible(!repeatPasswordVisible)
+  }
+
+  // Функция для обновления состояния повторного пароля
+  const handleRepeatPasswordChange = (event) => {
+    const repeatValue = event.target.value
+    setRepeatPassword(repeatValue)
+
+    // Вызов функции валидации
+    const errorMessage = validationRepeatPassword(repeatValue)
+
+    // Обновление состояния ошибок
+    setRepeatPasswordErrors((prevErrors) => ({
+      ...prevErrors,
+      repeatPassword: errorMessage,
+    }))
+  }
+
+  // Валидация повторного пароля
+  const validationRepeatPassword = (value) => {
+    if (!value) return 'Поле, обязательное для заполнения'
+
+    // Удаление начальных и конечных пробелов
+    const trimmedValue = value.trim()
+
+    if (trimmedValue.length < 8)
+      return 'Пароль должен быть длиной не менее 8 символов'
+
+    return null
   }
 
   // Функция для обработки успешной отправки формы
   const handleFormSubmit = (event) => {
     event.preventDefault()
 
-    if (formValues.password === formValues.repeatPassword) {
+    if (formValues.password === repeatPassword) {
       onRegister(formValues)
       onClose() //Закрываем modal
     }
+
     resetForm() // Сбрасываем форму
     // setAlertOpen(true); // Показываем Alert
   }
@@ -105,7 +138,6 @@ export const FormRegistration = ({ onClose }) => {
                       /\d/,
                       /\d/,
                     ]}
-                    
                     className={`${styles['form-input']} ${
                       formErrors.phone ? styles['error-border'] : ''
                     }`}
@@ -224,27 +256,29 @@ export const FormRegistration = ({ onClose }) => {
                 <div className={styles['position']}>
                   <label htmlFor="repeatPassword">
                     Повторите пароль
-                    {!formValues?.repeatPassword && (
+                    {!repeatPassword && (
                       <span className={styles['required']}>*</span>
                     )}
                   </label>
                   <div className={styles['password-wrapper']}>
                     <input
                       className={`${styles['form-input']} ${
-                        formErrors.repeatPassword ? styles['error-border'] : ''
+                        errorsRepeatPassword.repeatPassword
+                          ? styles['error-border']
+                          : ''
                       }`}
-                      type={repeatPassword ? 'text' : 'password'}
+                      type={repeatPasswordVisible ? 'text' : 'password'}
                       name="repeatPassword"
                       placeholder="Введите пароль"
-                      value={formValues?.repeatPassword}
-                      onInput={handleInput}
+                      value={repeatPassword}
+                      onChange={handleRepeatPasswordChange}
                     />
                     <button
                       type="button"
                       className={styles['password-control']}
                       onClick={toggleRepeatPassword}
                     >
-                      {repeatPassword ? (
+                      {repeatPasswordVisible ? (
                         <svg
                           width="36"
                           height="36"
@@ -289,9 +323,9 @@ export const FormRegistration = ({ onClose }) => {
                       )}
                     </button>
                   </div>
-                  {formErrors.repeatPassword && (
+                  {errorsRepeatPassword.repeatPassword && (
                     <span className={styles['error-title']}>
-                      {formErrors.repeatPassword}
+                      {errorsRepeatPassword.repeatPassword}
                     </span>
                   )}
                 </div>

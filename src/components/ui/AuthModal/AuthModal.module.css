@@ -68,7 +68,6 @@
 .tel-form-column {
   display: flex;
   flex-direction: column;
-  color: rgb(143, 143, 143);
   font-size: 18px;
   font-weight: 400;
   position: relative;

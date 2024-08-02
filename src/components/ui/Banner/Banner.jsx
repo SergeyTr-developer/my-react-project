@@ -25,12 +25,10 @@ export const Banner = () => {
               </picture>
             </div>
             <div className={styles['banner__text']}>
-              <h1>Доставка бесплатно от 1000 ₽</h1>
+              <h1 className="text-6xl">Доставка бесплатно от 1000 ₽</h1>
             </div>
           </div>
         </div>
-
-        <div></div>
       </div>
     </section>
   )

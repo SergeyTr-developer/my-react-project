@@ -20,7 +20,6 @@ export const Card = (props) => {
     id,
     title,
     description,
-    price,
     card,
     regular,
     rating,
@@ -29,12 +28,12 @@ export const Card = (props) => {
     isFavorite,
   } = props.details
 
-  const { onToggleFavorite } = props
+  const { onHeartClick } = props
 
   // Обработчик клика на иконку сердечка
-  const handleFavorite = () => {
+  const handleFavorite = (event) => {
     event.stopPropagation() // Предотвр. всплытие события
-    onToggleFavorite(id)
+    onHeartClick && onHeartClick(id)
   }
 
   return (
@@ -64,7 +63,7 @@ export const Card = (props) => {
             </svg>
           </button>
           <div>
-            {category === 'Stock' && (
+            {category === 'Акции' && (
               <div className={styles['discount']}>
                 <p>-50%</p>
               </div>
@@ -73,7 +72,7 @@ export const Card = (props) => {
         </div>
         <div className={styles['card-description']}>
           <div className={styles['price-wrap']}>
-            {category === 'Stock' ? (
+            {category === 'Акции' ? (
               <>
                 <p className={styles['price-flex-column-card']}>
                   {card} Р
@@ -86,7 +85,7 @@ export const Card = (props) => {
               </>
             ) : (
               <>
-                <p className={styles['price-flex-column-card']}>{price} Р</p>
+                <p className={styles['price-flex-column-card']}>{regular} Р</p>
               </>
             )}
           </div>

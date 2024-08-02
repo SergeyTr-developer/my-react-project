@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Card } from '../components/ui/Card/Card.jsx'
 import { Alert } from '../components/ui/Alert/Alert.jsx'
 import { Banner } from '../components/ui/Banner/Banner.jsx'
-
 import useProductsStore from '../store/useProductsStore.js'
 import styles from '../components/ui/Card/Card.module.css'
 
@@ -12,7 +11,7 @@ const Home = () => {
     promotionsProducts,
     newProducts,
     purchasedProducts,
-    setFavorite,
+    onToggleFavorite,
     getProductById,
   } = useProductsStore()
 
@@ -32,7 +31,7 @@ const Home = () => {
     // Достаем из стора поле isFavorite выбранного продукта
     const { isFavorite } = getProductById(id)
 
-    setFavorite(id) // вкл/выкл товара в сохраненки
+    onToggleFavorite(id) // вкл/выкл товара в сохраненки
 
     setAlertState({
       isOpen: true,
@@ -75,7 +74,7 @@ const Home = () => {
                 <Card
                   key={product?.id}
                   details={product}
-                  onToggleFavorite={handleFavoriteAndShowAlert}
+                  onHeartClick={handleFavoriteAndShowAlert}
                 />
               ))}
           </div>
@@ -112,7 +111,7 @@ const Home = () => {
                 <Card
                   key={product?.id}
                   details={product}
-                  onToggleFavorite={handleFavoriteAndShowAlert}
+                  onHeartClick={handleFavoriteAndShowAlert}
                 />
               ))}
           </div>
@@ -149,7 +148,7 @@ const Home = () => {
                 <Card
                   key={product?.id}
                   details={product}
-                  onToggleFavorite={handleFavoriteAndShowAlert}
+                  onHeartClick={handleFavoriteAndShowAlert}
                 />
               ))}
           </div>
@@ -162,8 +161,6 @@ const Home = () => {
         isOpen={alertState?.isOpen}
         onClose={handleCloseAlert}
       />
-
-    
     </>
   )
 }

@@ -12,21 +12,7 @@ const validators = {
    * @param {string} value - Значение поля.
    * @returns {string|null} - Сообщение об ошибке или null, если валидация прошла успешно.
    */
-  surname: (value) => {
-    if (!value) return 'Поле, обязательное для заполнения'
-
-    // Удаление начальных и конечных пробелов
-    const trimmedValue = value.trim()
-
-    const regexText = /^[^!>?<_\-$№#@]+$/
-
-    if (!regexText.test(trimmedValue))
-      return 'Текст не должен содержать символов !>?<_-$№#@'
-
-    return null
-  },
-
-  name: (value) => {
+  text: (value) => {
     if (!value) return 'Поле, обязательное для заполнения'
 
     // Удаление начальных и конечных пробелов
@@ -61,15 +47,8 @@ const validators = {
    * @param {string} value - Значение поля.
    * @returns {string|null} - Сообщение об ошибке или null, если валидация прошла успешно.
    */
-  // phone: (value) => {
-  //   if (!value) return 'field is required'
 
-  //   if (!/^\+?[0-9-]+$/.test(value)) return 'Invalid phone number'
-
-  //   return null
-  // },
-
-  phone: (value) => {
+  tel: (value) => {
     if (!value) return 'Поле, обязательное для заполнения'
 
     // Удаление начальных и конечных пробелов
@@ -100,17 +79,6 @@ const validators = {
     return null
   },
 
-  repeatPassword: (value) => {
-    if (!value) return 'Поле, обязательное для заполнения'
-
-    // Удаление начальных и конечных пробелов
-    const trimmedValue = value.trim()
-
-    if (trimmedValue.length < 8)
-      return 'Пароль должен быть длиной не менее 8 символов'
-
-    return null
-  },
   /**
    * Валидатор для числовых полей.
    * @param {string} value - Значение поля.

@@ -2,7 +2,7 @@ header {
   box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.1);
   background-color: #ffff;
   position: relative;
-  z-index: 1000;
+  z-index: 11;
 }
 
 a {

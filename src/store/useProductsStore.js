@@ -34,15 +34,15 @@ const useProductsStore = create((set) => {
 
       // Карточки товара по категориям
       const promotionsProducts = products.filter(
-        (product) => product.category === 'Stock'
+        (product) => product.category === 'Акции'
       )
 
       const newProducts = products.filter(
-        (product) => product.category === 'New items'
+        (product) => product.category === 'Новинки'
       )
 
       const purchasedProducts = products.filter(
-        (product) => product.category === 'Purchased before'
+        (product) => product.category === 'Покупали'
       )
 
       set({ products, promotionsProducts, newProducts, purchasedProducts })
@@ -69,7 +69,7 @@ const useProductsStore = create((set) => {
    * Переключает состояние сохраненного продукта по id.
    * @param {string} id - id продукта.
    */
-  const setFavorite = (id) => {
+  const onToggleFavorite = (id) => {
     // Обновляем продукты на странице, переключая состояние сохраненного продукта
     const updatedProducts = products?.map((product) => {
       if (product?.id === id) {
@@ -105,7 +105,7 @@ const useProductsStore = create((set) => {
     newProducts,
     purchasedProducts,
     getProductById,
-    setFavorite,
+    onToggleFavorite,
     getFavoriteProducts,
   }
 })

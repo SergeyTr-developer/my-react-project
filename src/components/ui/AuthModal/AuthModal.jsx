@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom'
 import MaskedInput from 'react-text-mask'
 import { useState, useEffect } from 'react'
 import { FormRegistration } from '../FormRegistration/FormRegistration'
 import styles from './AuthModal.module.css'
 import useForm from '../../../hooks/useForm'
+import { useAuth } from '../../../hooks/useAuth'
 
 export const AuthModal = ({ onClose }) => {
   const { formValues, handleInput, formErrors, resetForm } = useForm({
@@ -10,7 +12,29 @@ export const AuthModal = ({ onClose }) => {
     password: '',
   })
 
-  console.log('данные авторизации', formValues)
+  const { user, onLogin } = useAuth()
+
+  const navigate = useNavigate() // хук для роутинга
+
+  useEffect(() => {
+    if (user && user.role === 'admin') {
+      navigate(`/admin`)
+      onClose() // Закрываем Modal
+      resetForm() // Сбрасываем форму
+    } else if (user && user.role === 'user') {
+      navigate(`/`)
+      onClose() // Закрываем Modal
+      resetForm() // Сбрасываем форму
+    }
+  }, [user, navigate, onClose, resetForm])
+
+  // Обработка формы при входе в систему
+  const handleLoginForm = (event) => {
+    event.preventDefault()
+    if (isTelValid) {
+      onLogin(formValues)
+    }
+  }
 
   // Состояния валидности телефона
   const [isTelValid, setIsTelValid] = useState(false)
@@ -95,7 +119,10 @@ export const AuthModal = ({ onClose }) => {
           <dialog open className={styles['dialog']}>
             <div className={styles['modal-content-column']}>
               <h3 className={styles['modal-title']}>Вход</h3>
-              <form className={styles['modal-form-column']}>
+              <form
+                onSubmit={handleLoginForm}
+                className={styles['modal-form-column']}
+              >
                 <div className={styles['tel-form-column']}>
                   {!isTelValid ? (
                     <>
@@ -120,7 +147,6 @@ export const AuthModal = ({ onClose }) => {
                           /\d/,
                           /\d/,
                         ]}
-                        
                         className={`${styles['tel-input']} ${
                           formErrors.phone ? styles['error-border'] : ''
                         }`}
@@ -143,7 +169,6 @@ export const AuthModal = ({ onClose }) => {
                       <label htmlFor="password">Пароль</label>
                       <div className={styles['password-wrapper']}>
                         <input
-                         
                           className={`${styles['password-input']} ${
                             formErrors.password ? styles['error-border'] : ''
                           }`}
@@ -214,12 +239,18 @@ export const AuthModal = ({ onClose }) => {
                     </span>
                   )}
                 </div>
-                <button
-                  onClick={handleButtonClick}
-                  className={styles['login-button']}
-                >
-                  {!isTelValid ? 'Войти' : 'Потвердить'}
-                </button>
+                {!isTelValid ? (
+                  <button
+                    onClick={handleButtonClick}
+                    className={styles['login-button']}
+                  >
+                    Войти
+                  </button>
+                ) : (
+                  <button type="submit" className={styles['login-button']}>
+                    Потвердить
+                  </button>
+                )}
               </form>
               <div className={styles['registration-flex-wraper']}>
                 {!isTelValid ? (
