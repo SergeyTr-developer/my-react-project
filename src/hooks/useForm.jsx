@@ -16,49 +16,33 @@ export function useForm(initialValues) {
   // Состояние для отслеживания ошибок валидации
   const [formErrors, setFormErrors] = useState({})
 
-  // Обработчик при смене данных на элементе формы
-  // const handleInputChange = (event) => {
-  //   // Извлекаем имя поля и его новое значение из события
-  //   const { name, value } = event.target;
-
-  //   // Обновляем state формы
-  //   setFormValues({
-  //     ...formValues,
-  //     [name]: value, // Обновляем значение поля в state
-  //   });
-  // };
-
   /**
    * Обработчик изменения значения полей формы.
    *
    * @param {Object} e - Событие изменения.
    */
+
   const handleInput = (e) => {
-    const { name, value } = e.target
+    const { name, value, type } = e.target
 
     // Обновляем состояние формы для текущего поля
     const updatedFormState = { ...formValues, [name]: value }
-
     setFormValues(updatedFormState)
 
-    // Валидируем только текущее поле
+    // Валидируем текущее поле по атрибуту type
     const validationErrors = {
       ...formErrors,
-      [name]: validateForm({ [name]: value })[name],
+      [name]: validateForm({ [type]: value })[type] || null,
     }
-
-    console.log('ошибки в хуке', validationErrors)
 
     // Обновляем состояние ошибок
     setFormErrors(validationErrors)
   }
-
   // Функция для сброса состояния формы
-  // const resetForm = () => setFormValues(initialValues)
   const resetForm = () => {
-    setFormValues(initialValues);
-    setFormErrors({}); // Сброс ошибок
-  };
+    setFormValues(initialValues)
+    setFormErrors({}) // Сброс ошибок
+  }
 
   return {
     formValues,
