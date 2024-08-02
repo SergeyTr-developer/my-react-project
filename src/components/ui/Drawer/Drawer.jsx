@@ -87,7 +87,7 @@ export const Drawer = ({
             {title && <h2 className="text-3xl font-bold mb-8">{title}</h2>}
             <button
               onClick={closeDrawer}
-              className="text-gray-600 hover:text-gray-800 w-10 h-10 inline-flex justify-center items-center absolute top-0 right-0 text-xl border border-solid border-gray-400 border-[1px]"
+              className="text-gray-600 hover:text-gray-800 w-10 h-10 inline-flex justify-center items-center absolute top-0 right-0 text-xl border border-solid border-gray-400 "
             >
               <LiaTimesSolid />
             </button>

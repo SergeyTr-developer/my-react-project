@@ -15,7 +15,7 @@ const Admin = () => {
   const [selectedValue, setSelectedValue] = useState(null)
 
   // Стор для CRUD операций.
-  const { items, fetchItems, addItem, editItem, deleteItem } = useItemsStore()
+  const { items, fetchItems, addItem } = useItemsStore()
 
   useEffect(() => {
     fetchItems()
@@ -44,30 +44,30 @@ const Admin = () => {
    *
    * @returns {void}
    */
-  const handleEditItem = () => {
-    if (selectedValue) {
-      editItem(selectedValue?.id, formValues)
+  // const handleEditItem = () => {
+  //   if (selectedValue) {
+  //     editItem(selectedValue?.id, formValues)
 
-      setDrawerOpen(false)
+  //     setDrawerOpen(false)
 
-      setSelectedValue(null)
-    }
-  }
+  //     setSelectedValue(null)
+  //   }
+  // }
 
   /**
    * Обрабатывает удаление товара.
    *
    * @returns {void}
    */
-  const handleDeleteItem = () => {
-    if (selectedValue) {
-      deleteItem(selectedValue?.id)
+  // const handleDeleteItem = () => {
+  //   if (selectedValue) {
+  //     deleteItem(selectedValue?.id)
 
-      setDrawerOpen(false)
+  //     setDrawerOpen(false)
 
-      setSelectedValue(null)
-    }
-  }
+  //     setSelectedValue(null)
+  //   }
+  // }
 
   // Обработка данных формы.
   const { formValues, handleInput, resetForm } = useForm({
