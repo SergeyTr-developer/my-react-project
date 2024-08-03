@@ -31,7 +31,7 @@ const useItemsStore = create((set) => {
    */
   const addItem = async (newItem) => {
     try {
-      const response = await fetch('http://localhost:3000/items', {
+      const response = await fetch('http://localhost:3000/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

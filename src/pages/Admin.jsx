@@ -3,26 +3,39 @@ import { useEffect, useState } from 'react'
 import { Drawer } from '../components/ui/Drawer/Drawer'
 import Table from '../components/ui/Table/Table'
 import useItemsStore from '../store/useItemsStore'
+import { Alert } from '../components/ui/Alert/Alert'
 
 const Admin = () => {
   // Стейт для скрытия/показа компонента Drawer
   const [isDrawerOpen, setDrawerOpen] = useState(false)
 
-  // Стейт для скрытия/показа компонента Alert
-  // const [isAlertOpen, setAlertOpen] = useState(false)
+  // Стейт для скрытия/показа и передачи сообщения в Alert
+  const [alertState, setAlertState] = useState({
+    isOpen: false,
+    message: '',
+  })
+
+  // Обработчик закрытия компонента Alert
+  const handleCloseAlert = () => {
+    setAlertState({ ...alertState, isOpen: false })
+  }
 
   // Стейт для показа детальной информации по товару в Drawer
   const [selectedValue, setSelectedValue] = useState(null)
 
+  // Стейт для переключения режима редактирования
+  const [isEditing, setIsEditing] = useState(false)
+
   // Стор для CRUD операций.
-  const { items, fetchItems, addItem } = useItemsStore()
+  const { items, fetchItems, addItem, editItem, deleteItem } = useItemsStore()
 
   useEffect(() => {
     fetchItems()
   }, [fetchItems])
 
   /**
-   * Обработка отправки формы. Если товар выбран - редактирует, иначе добавляет новый товар.
+   * Обработка отправки формы.
+   * Если товар выбран, то редактируем его, иначе добавляем новый товар.
    *
    * @param {Event} event - Событие отправки формы.
    * @returns {void}
@@ -30,12 +43,23 @@ const Admin = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault()
 
-    addItem(formValues)
+    if (selectedValue) {
+      // Если товар выбран, редактируем его
+      editItem(selectedValue?.id, formValues)
 
+      setAlertState({
+        isOpen: true,
+        message: 'Товар был успешно отредактирован.',
+      })
+    } else {
+      // Если товар не выбран, добавляем новый товар
+      addItem(formValues)
+      setAlertState({
+        isOpen: true,
+        message: 'Товар был успешно добавлен.',
+      })
+    }
     setDrawerOpen(false)
-
-    // setAlertOpen(true)
-
     resetForm()
   }
 
@@ -44,30 +68,27 @@ const Admin = () => {
    *
    * @returns {void}
    */
-  // const handleEditItem = () => {
-  //   if (selectedValue) {
-  //     editItem(selectedValue?.id, formValues)
-
-  //     setDrawerOpen(false)
-
-  //     setSelectedValue(null)
-  //   }
-  // }
+  const handleEditItem = () => {
+    setIsEditing(true)
+  }
 
   /**
    * Обрабатывает удаление товара.
    *
    * @returns {void}
    */
-  // const handleDeleteItem = () => {
-  //   if (selectedValue) {
-  //     deleteItem(selectedValue?.id)
-
-  //     setDrawerOpen(false)
-
-  //     setSelectedValue(null)
-  //   }
-  // }
+  const handleDeleteItem = () => {
+    if (selectedValue) {
+      deleteItem(selectedValue?.id)
+      setDrawerOpen(false)
+      setSelectedValue(null)
+      setIsEditing(false) // Сбрасываем режим редактирования
+      setAlertState({
+        isOpen: true,
+        message: 'Товар был удален.',
+      })
+    }
+  }
 
   // Обработка данных формы.
   const { formValues, handleInput, resetForm } = useForm({
@@ -76,6 +97,7 @@ const Admin = () => {
     description: '',
     card: '',
     regular: '',
+    imgSrc: '',
   })
 
   /**
@@ -87,6 +109,7 @@ const Admin = () => {
   const handleRowDoubleClick = (rowData) => {
     setSelectedValue(rowData)
     setDrawerOpen(true)
+    setIsEditing(false) // Режим просмотра по умолчанию
   }
 
   /**
@@ -94,9 +117,11 @@ const Admin = () => {
    *
    * @returns {void}
    */
-  const hanldeCloseDrawer = () => {
+  const handleCloseDrawer = () => {
     setDrawerOpen(false)
     setSelectedValue(null)
+    setIsEditing(false) // Сбрасываем режим редактирования
+    resetForm()
   }
 
   return (
@@ -108,7 +133,11 @@ const Admin = () => {
 
         <button
           className="bg-orange-500 mb-4 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded"
-          onClick={() => setDrawerOpen(true)}
+          onClick={() => {
+            setSelectedValue(null)
+            setIsEditing(true)
+            setDrawerOpen(true)
+          }}
         >
           Добавить товар
         </button>
@@ -129,10 +158,12 @@ const Admin = () => {
         {isDrawerOpen && (
           <Drawer
             isOpen={isDrawerOpen}
-            onClose={hanldeCloseDrawer}
+            onClose={handleCloseDrawer}
             title={
               selectedValue
-                ? 'Редактирование товара'
+                ? isEditing
+                  ? 'Редактирование товара'
+                  : 'Чтение данных по товару'
                 : 'Добавление нового товара'
             }
           >
@@ -141,7 +172,7 @@ const Admin = () => {
                 <div className="mb-4">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="taskName"
+                    htmlFor="name"
                   >
                     Название товара
                   </label>
@@ -152,12 +183,13 @@ const Admin = () => {
                     defaultValue={selectedValue?.name || formValues?.name}
                     onChange={handleInput}
                     placeholder="Введите название"
+                    readOnly={!isEditing}
                   />
                 </div>
                 <div className="mb-4">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="taskName"
+                    htmlFor="category"
                   >
                     Категория товара
                   </label>
@@ -170,12 +202,13 @@ const Admin = () => {
                     }
                     onChange={handleInput}
                     placeholder="Введите категорию"
+                    readOnly={!isEditing}
                   />
                 </div>
                 <div className="mb-4">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="taskName"
+                    htmlFor="description"
                   >
                     Описание товара
                   </label>
@@ -187,14 +220,15 @@ const Admin = () => {
                       selectedValue?.description || formValues?.description
                     }
                     onChange={handleInput}
-                    placeholder="Введите цену"
+                    placeholder="Введите описание"
+                    readOnly={!isEditing}
                   />
                 </div>
 
                 <div className="mb-4">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="taskName"
+                    htmlFor="card"
                   >
                     Цена по карте
                   </label>
@@ -205,13 +239,14 @@ const Admin = () => {
                     defaultValue={selectedValue?.card || formValues?.card}
                     onChange={handleInput}
                     placeholder="Введите цену"
+                    readOnly={!isEditing}
                   />
                 </div>
 
                 <div className="mb-4">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="taskName"
+                    htmlFor="regular"
                   >
                     Обычная цена
                   </label>
@@ -222,27 +257,62 @@ const Admin = () => {
                     defaultValue={selectedValue?.regular || formValues?.regular}
                     onChange={handleInput}
                     placeholder="Введите цену"
+                    readOnly={!isEditing}
                   />
                 </div>
 
-                {/* {selectedValue && (
-                  <div className="flex justify-between">
-                    <button onClick={handleEditItem}>Сохранить</button>
-                    <button onClick={handleDeleteItem}>Удалить</button>
-                  </div>
-                )} */}
+                <div className="mb-4">
+                  <label
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="imgSrc"
+                  >
+                    Изображение
+                  </label>
+                  <input
+                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    name="imgSrc"
+                    type="url"
+                    defaultValue={selectedValue?.imgSrc || formValues?.imgSrc}
+                    onChange={handleInput}
+                    placeholder="Введите url"
+                    readOnly={!isEditing}
+                  />
+                </div>
+
+                <div className="flex gap-4">
+                  {!isEditing && selectedValue && (
+                    <>
+                      <button
+                        className="bg-orange-500 mb-4 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded"
+                        onClick={handleEditItem}
+                      >
+                        Редактировать
+                      </button>
+                      <button
+                        className="bg-[rgb(244,63,94)] mb-4 hover:bg-[rgb(244,63,94)] text-white font-bold py-2 px-4 rounded"
+                        onClick={handleDeleteItem}
+                      >
+                        Удалить
+                      </button>
+                    </>
+                  )}
+                  {isEditing && (
+                    <button className="bg-orange-500 mb-4 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">
+                      Сохранить
+                    </button>
+                  )}
+                </div>
               </form>
             </div>
           </Drawer>
         )}
 
-        {/* <Alert
-          title="Добавление товара."
-          subtitle="Товар был успешно добавлен."
+        <Alert
           variant="neutral"
-          isOpen={isAlertOpen}
-          onClose={() => setAlertOpen(false)}
-        /> */}
+          subtitle={alertState?.message}
+          isOpen={alertState?.isOpen}
+          onClose={handleCloseAlert}
+        />
       </div>
     </section>
   )
