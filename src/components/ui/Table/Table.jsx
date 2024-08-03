@@ -10,7 +10,7 @@ import TableRow from './TableRow'
  */
 const Table = ({ data, headers, onRowDoubleClick }) => {
   return (
-    <div className="w-full">
+    <div className="w-full mb-28">
       <div className="flex flex-row">
         {headers?.map((header) => (
           <div
