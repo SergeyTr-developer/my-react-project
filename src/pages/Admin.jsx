@@ -1,5 +1,5 @@
 import useForm from '../hooks/useForm'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Drawer } from '../components/ui/Drawer/Drawer'
 import Table from '../components/ui/Table/Table'
 import useItemsStore from '../store/useItemsStore'
@@ -8,6 +8,8 @@ import { Alert } from '../components/ui/Alert/Alert'
 const Admin = () => {
   // Стейт для скрытия/показа компонента Drawer
   const [isDrawerOpen, setDrawerOpen] = useState(false)
+
+  const bodyRef = useRef(document.body)
 
   // Стейт для скрытия/показа и передачи сообщения в Alert
   const [alertState, setAlertState] = useState({
@@ -124,6 +126,22 @@ const Admin = () => {
     setIsEditing(false) // Сбрасываем режим редактирования
     resetForm()
   }
+
+  // Использование useEffect для управления классом 'no-scroll'
+  useEffect(() => {
+    const bodyLink = bodyRef.current
+
+    if (isDrawerOpen) {
+      bodyLink.classList.add('no-scroll')
+    } else {
+      bodyLink.classList.remove('no-scroll')
+    }
+
+    // Очистка при размонтировании компонента
+    return () => {
+      bodyLink.classList.remove('no-scroll')
+    }
+  }, [isDrawerOpen]) // Зависимость от состояния isModal
 
   return (
     <section className="admin">

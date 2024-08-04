@@ -79,15 +79,17 @@ export const Drawer = ({
       <div className="fixed z-20 top-0 left-0 right-0 bottom-0 bg-opacity-50 bg-black">
         <aside
           ref={drawerRef}
-          className={`fixed top-0 bottom-0 ${
+          className={`fixed top-0 bottom-0 overflow-auto ${
             align === 'right' ? 'right-0' : 'left-0'
           } right-0 z-20 w-2/6 p-8 bg-white transition-transform duration-300 ease-in-out`}
         >
           <header className="flex justify-between mb-4 shadow-none">
-            {title && <h2 className="text-3xl font-bold mb-8">{title}</h2>}
+            {title && (
+              <h2 className="text-3xl font-bold mb-8 text-center">{title}</h2>
+            )}
             <button
               onClick={closeDrawer}
-              className="text-gray-600 hover:text-gray-800 w-10 h-10 inline-flex justify-center items-center absolute top-0 right-0 text-xl border border-solid border-gray-400 "
+              className="text-gray-600 hover:text-gray-800 w-10 h-10 inline-flex justify-center items-center  text-xl border border-solid border-gray-400 "
             >
               <LiaTimesSolid />
             </button>
