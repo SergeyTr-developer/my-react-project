@@ -4,6 +4,7 @@ import Home from '../../pages/Home'
 import CardDetail from '../../pages/CardDetail'
 import FavoritesList from '../../pages/FavoritesList'
 import Admin from '../../pages/Admin'
+import Cart from '../../pages/Cart'
 import PrivateRoute from './PrivateRoute'
 
 /** Массив роутов приложения */
@@ -17,6 +18,7 @@ const routes = [
   },
   { path: 'cards/:id', element: <CardDetail /> },
   { path: 'favorites', element: <FavoritesList /> },
+  { path: 'cart', element: <Cart /> },
 ]
 
 /**

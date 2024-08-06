@@ -1,4 +1,8 @@
+import { useState } from 'react'
+import useProductsStore from '../../../store/useProductsStore'
+import { Alert } from '../Alert/Alert'
 import styles from './Card.module.css'
+
 /**
  * Компонент карточка.
  * @param {object} props - Свойства компонента.
@@ -30,10 +34,35 @@ export const Card = (props) => {
 
   const { onHeartClick } = props
 
+  // Стейт для скрытия/показа и передачи сообщения в Alert
+  const [alertState, setAlertState] = useState({
+    isOpen: false,
+    message: '',
+  })
+
+  // Стор для работы с продуктами
+  const { getProductById, addToCart } = useProductsStore()
+
+  // Обработчик закрытия компонента Alert
+  const handleCloseAlert = () => {
+    setAlertState({ ...alertState, isOpen: false })
+  }
+
   // Обработчик клика на иконку сердечка
   const handleFavorite = (event) => {
     event.stopPropagation() // Предотвр. всплытие события
     onHeartClick && onHeartClick(id)
+  }
+
+  // Обработчик добавления товара в корзину
+  const handleAddToCart = () => {
+    // Находим карточку по id.
+    const card = getProductById(id)
+    addToCart(card)
+    setAlertState({
+      isOpen: true,
+      message: 'Товар успешно добавлен в корзину.',
+    })
   }
 
   return (
@@ -99,9 +128,17 @@ export const Card = (props) => {
             )}
           </div>
 
-          <button className={styles['card-btn']}>В корзину</button>
+          <button onClick={handleAddToCart} className={styles['card-btn']}>
+            В корзину
+          </button>
         </div>
       </div>
+      <Alert
+        variant="neutral"
+        subtitle={alertState?.message}
+        isOpen={alertState?.isOpen}
+        onClose={handleCloseAlert}
+      />
     </>
   )
 }

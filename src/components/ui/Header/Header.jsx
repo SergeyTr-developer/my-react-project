@@ -61,6 +61,12 @@ const Header = () => {
   const handleOpenAdmin = () => {
     navigate(`/admin`)
   }
+
+  // Показ страницы корзина товаров
+  const handleToCartOpen = () => {
+    navigate(`/cart`)
+  }
+
   /**
    * Определяет, активна ли ссылка.
    * @param {string} path - Путь ссылки.
@@ -179,7 +185,12 @@ const Header = () => {
                 <span>Заказы</span>
               </button>
 
-              <button className={styles['list-items-btn']}>
+              <button
+                onClick={handleToCartOpen}
+                className={`${styles['list-items-btn']} ${
+                  isActiveLink('/cart') ? 'active' : ''
+                }`}
+              >
                 <svg
                   width="24"
                   height="24"

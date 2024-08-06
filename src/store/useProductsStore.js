@@ -4,7 +4,7 @@ import { create } from 'zustand'
 /**
  * Стор для управления продуктами и состоянием сохраненных продуктов.
  */
-const useProductsStore = create((set) => {
+const useProductsStore = create((set, get) => {
   // Инициализация переменной для хранения продуктов
   let products
   let promotionsProducts
@@ -13,6 +13,9 @@ const useProductsStore = create((set) => {
 
   // Загрузка избранных продуктов из localStorage.
   const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || []
+
+  // Загрузка товаров корзины из localStorage.
+  const storedCart = JSON?.parse(localStorage?.getItem('cart')) || []
 
   ;(async () => {
     try {
@@ -99,6 +102,34 @@ const useProductsStore = create((set) => {
   const getFavoriteProducts = () =>
     products?.filter((product) => product?.isFavorite)
 
+  /**
+   * Функция добавления товаров в корзину
+   * @param {Object} product - Данные товара.
+   * @returns {void}
+   */
+  const addToCart = (product) => {
+    const updatedCart = [...get().cart, { ...product, quantity: 1 }]
+
+    localStorage?.setItem('cart', JSON?.stringify(updatedCart))
+
+    set({ cart: updatedCart })
+  }
+
+  /**
+   * Функция удаления товара из корзины
+   * @param {string} productId - id товара.
+   * @returns {void}
+   */
+  const deleteProductFromCart = (productId) => {
+    const updatedCart = get()?.cart?.filter(
+      (product) => product?.id !== productId
+    )
+
+    localStorage?.setItem('cart', JSON?.stringify(updatedCart))
+
+    set({ cart: updatedCart })
+  }
+
   return {
     products,
     promotionsProducts,
@@ -107,6 +138,9 @@ const useProductsStore = create((set) => {
     getProductById,
     onToggleFavorite,
     getFavoriteProducts,
+    cart: storedCart,
+    addToCart,
+    deleteProductFromCart,
   }
 })
 

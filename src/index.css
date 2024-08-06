@@ -16,10 +16,6 @@ body {
   overflow: hidden;
 }
 
-.scroll {
-  overflow: auto;
-}
-
 .container {
   max-width: 1208px;
   margin: 0 auto;

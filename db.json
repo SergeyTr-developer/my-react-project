@@ -10,7 +10,7 @@
       "regular": "50.50",
       "imgSrc": "../assets/products/блинчики с мясом.svg",
       "isFavorite": true,
-      "cartQuantity": 1
+      "quantity": 1
     },
     {
       "id": "1",
@@ -22,7 +22,7 @@
       "regular": "50.50",
       "imgSrc": "../assets/products/молоко ПРОСТОКВАШИНО.svg",
       "isFavorite": true,
-      "cartQuantity": 1
+      "quantity": 1
     },
     {
       "id": "2",
@@ -34,7 +34,7 @@
       "regular": "50.50",
       "imgSrc": "../assets/products/колбаса сырокопченая.svg",
       "isFavorite": false,
-      "cartQuantity": 1
+      "quantity": 1
     },
     {
       "id": "3",
@@ -46,7 +46,7 @@
       "regular": "50.50",
       "imgSrc": "../assets/products/сосиски вареные.svg",
       "isFavorite": false,
-      "cartQuantity": 1
+      "quantity": 1
     },
     {
       "id": "4",
@@ -58,7 +58,7 @@
       "regular": "599.99",
       "imgSrc": "../assets/products/колбаса черкизово премиум.svg",
       "isFavorite": false,
-      "cartQuantity": 1
+      "quantity": 1
     },
     {
       "id": "5",
@@ -70,7 +70,7 @@
       "regular": "50.50",
       "imgSrc": "../assets/products/колбаса сырокопченая.svg",
       "isFavorite": false,
-      "cartQuantity": 1
+      "quantity": 1
     },
     {
       "id": "6",
@@ -82,7 +82,7 @@
       "regular": "159.99",
       "imgSrc": "../assets/products/сосиски вареные.svg",
       "isFavorite": true,
-      "cartQuantity": 1
+      "quantity": 1
     },
     {
       "id": "7",
@@ -94,7 +94,7 @@
       "regular": "50.50",
       "imgSrc": "../assets/products/молоко ПРОСТОКВАШИНО.svg",
       "isFavorite": false,
-      "cartQuantity": 1
+      "quantity": 1
     },
     {
       "id": "8",
@@ -106,7 +106,7 @@
       "regular": "77.99",
       "imgSrc": "../assets/products/ветчина питерская.svg",
       "isFavorite": false,
-      "cartQuantity": 1
+      "quantity": 1
     },
     {
       "id": "9",
@@ -118,7 +118,7 @@
       "regular": "159.99",
       "imgSrc": "../assets/products/сосиски вареные.svg",
       "isFavorite": true,
-      "cartQuantity": 1
+      "quantity": 1
     },
     {
       "id": "10",
@@ -130,7 +130,7 @@
       "regular": "599.99",
       "imgSrc": "../assets/products/колбаса черкизово премиум.svg",
       "isFavorite": false,
-      "cartQuantity": 1
+      "quantity": 1
     },
     {
       "id": "11",
@@ -142,7 +142,37 @@
       "regular": "50.50",
       "imgSrc": "../assets/products/молоко ПРОСТОКВАШИНО.svg",
       "isFavorite": true,
-      "cartQuantity": 1
+      "quantity": 1
+    },
+    {
+      "id": "3310",
+      "name": "Батон",
+      "category": "Акции",
+      "description": "Вкус, запах и вид из нашего детства. Белый бездрожжевой батон на закваске с хрустящей румяной корочкой",
+      "card": "50",
+      "regular": "70",
+      "rating": "5",
+      "imgSrc": "https://vsedoma-family.ru/sites/default/files/styles/product/public/product/045c38ca71d539192d0ca5c9980a60aa.jpg?itok=D61fkL5T"
+    },
+    {
+      "id": "d94d",
+      "name": "ЧИАБАТТА",
+      "category": "Новинки",
+      "description": "МИНИ ЧИАБАТТА ТЕМНАЯ",
+      "card": "70",
+      "regular": "90",
+      "rating": "5",
+      "imgSrc": "https://vsedoma-family.ru/sites/default/files/styles/product/public/product/63a3f713401fc8fd27e15bd1ffcfdadf.jpg?itok=YfzVKQNQ"
+    },
+    {
+      "id": "2df3",
+      "name": "ХЛЕБ НОРВЕЖСКИЙ",
+      "category": "Покупали",
+      "description": "Уникальный бездрожжевой хлеб из смеси ржано-пшеничной муки на медовой закваске с семенами подсолнечника, тыквы, мака и льна, который хорошо сочетается со сливочным маслом и любыми закусками",
+      "card": "",
+      "regular": "69",
+      "rating": "4",
+      "imgSrc": "https://vsedoma-family.ru/sites/default/files/styles/product/public/product/10cfbf1b21bb15e09c5ec4f29dccf93b.jpg?itok=wnFZ7vK-"
     }
   ],
   "users": [
