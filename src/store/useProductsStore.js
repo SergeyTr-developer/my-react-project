@@ -130,6 +130,34 @@ const useProductsStore = create((set, get) => {
     set({ cart: updatedCart })
   }
 
+  /**
+   * Функция увеличения/уменьшения количества товара.
+   * @param {string} quantity - Количество (значение).
+   * @param {string} productId - id товара.
+   */
+  const updateCartQuantity = (quantity, productId) => {
+    const updatedCart = get()?.cart?.map((item) => {
+      if (item?.id === productId) {
+        return { ...item, quantity }
+      }
+      return item
+    })
+
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+
+    set({ cart: updatedCart })
+  }
+
+  /**
+   * Получает общее количество добавленных ранее товаров в корзину.
+   * @returns {Array} Массив всех добавленных ранее товаров.
+   */
+  const getAllCartProducts = () => {
+    return get().cart?.reduce((total, product) => {
+      return total + product?.quantity
+    }, 0)
+  }
+
   return {
     products,
     promotionsProducts,
@@ -140,6 +168,8 @@ const useProductsStore = create((set, get) => {
     getFavoriteProducts,
     cart: storedCart,
     addToCart,
+    updateCartQuantity,
+    getAllCartProducts,
     deleteProductFromCart,
   }
 })

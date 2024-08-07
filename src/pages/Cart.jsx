@@ -1,7 +1,8 @@
-import styles from '../styles/pages/Cart.module.css'
+import { useState } from 'react'
 import useProductsStore from '../store/useProductsStore'
 import { Alert } from '../components/ui/Alert/Alert'
-import { useState } from 'react'
+import Stepper from '../components/ui/Stepper/Stepper'
+import styles from '../styles/pages/Cart.module.css'
 
 const Cart = () => {
   // Стейт для скрытия/показа и передачи сообщения в Alert
@@ -40,58 +41,69 @@ const Cart = () => {
         {cart?.length > 0 && (
           <div className={styles['cart-flex-container']}>
             {cart?.map((item) => (
-              <div
-                key={crypto?.randomUUID()}
-                // className="border rounded shadow p-4 max-w-3xl relative"
-              >
+              <div key={crypto?.randomUUID()}>
                 <div className={styles['cart-flex-wrapper']}>
+                  <div></div>
                   <div className="pb-3">
                     <img
                       src={item?.imgSrc}
                       alt={item?.title}
-                      // className="w-48 h-48 mr-4 object-cover bg-indigo-500"
                       className={styles['cart-small-image']}
                     />
                   </div>
 
-                  <div>
-                    {/* <h3>{item?.name}</h3> */}
-                    <p className={styles['cart-item-description']}>
-                      {item?.description}
-                    </p>
-                    {/* <span>{item?.regular}₽</span>
-                    <span>за шт.</span> */}
-                    {item.category === 'Акции' ? (
-                      <div className="flex gap-2">
-                        <p className="flex flex-col ">
-                          <span className={styles['cart-item-card']}>
-                            {item?.card} ₽
-                          </span>
-                          <span className={styles['cart-price-desc']}>
-                            С картой
-                          </span>
-                        </p>
+                  <div className="flex flex-wrap w-full justify-between">
+                    <div>
+                      <p className={styles['cart-item-description']}>
+                        {item?.description}
+                      </p>
+                      {item.category === 'Акции' ? (
+                        <div className="flex gap-2">
+                          <p className="flex flex-col ">
+                            <span className={styles['cart-item-card']}>
+                              {item?.card} ₽
+                            </span>
+                            <span className={styles['cart-price-desc']}>
+                              С картой
+                            </span>
+                          </p>
 
-                        <p className="flex flex-col">
-                          <span className={styles['cart-item-regular']}>
+                          <p className="flex flex-col">
+                            <span className={styles['cart-item-regular']}>
+                              {item?.regular} ₽
+                            </span>
+                            <span className={styles['cart-price-desc']}>
+                              Обычная
+                            </span>
+                          </p>
+                          <span className={styles['cart-item-one']}>
+                            за шт.
+                          </span>
+                          <span className={styles['cart-item-discount']}>
+                            -50%
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="flex gap-2">
+                          <span className={styles['cart-item-card']}>
                             {item?.regular} ₽
                           </span>
-                          <span className={styles['cart-price-desc']}>
-                            Обычная
+                          <span className={styles['cart-item-one']}>
+                            за шт.
                           </span>
-                        </p>
-                        <span className={styles['cart-item-one']}>за шт.</span>
-                        <span className={styles['cart-item-discount']}>-50%</span>
-                      </div>
-                    ) : (
-                      <div className="flex gap-2">
-                        <span className={styles['cart-item-card']}>
-                          {item?.regular} ₽
-                        </span>
-                        <span className={styles['cart-item-one']}>за шт.</span>
-                      </div>
-                    )}
+                        </div>
+                      )}
+                    </div>
+                    <div className="mr-36">
+                      <Stepper
+                        step={1}
+                        minValue="1"
+                        maxValue="10"
+                        id={item?.id}
+                      />
+                    </div>
                   </div>
+
                   <button
                     onClick={() => handleDeleteProduct(item.id)}
                     className="absolute top-0 right-0"

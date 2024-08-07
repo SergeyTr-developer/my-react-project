@@ -145,34 +145,15 @@
       "quantity": 1
     },
     {
-      "id": "3310",
-      "name": "Батон",
+      "id": "3f7c",
+      "name": "Батончик Nestle",
       "category": "Акции",
-      "description": "Вкус, запах и вид из нашего детства. Белый бездрожжевой батон на закваске с хрустящей румяной корочкой",
-      "card": "50",
-      "regular": "70",
+      "description": "Батончик Nestle Fitness с цельными злаками и клубникой",
+      "card": "57",
+      "regular": "75",
       "rating": "5",
-      "imgSrc": "https://vsedoma-family.ru/sites/default/files/styles/product/public/product/045c38ca71d539192d0ca5c9980a60aa.jpg?itok=D61fkL5T"
-    },
-    {
-      "id": "d94d",
-      "name": "ЧИАБАТТА",
-      "category": "Новинки",
-      "description": "МИНИ ЧИАБАТТА ТЕМНАЯ",
-      "card": "70",
-      "regular": "90",
-      "rating": "5",
-      "imgSrc": "https://vsedoma-family.ru/sites/default/files/styles/product/public/product/63a3f713401fc8fd27e15bd1ffcfdadf.jpg?itok=YfzVKQNQ"
-    },
-    {
-      "id": "2df3",
-      "name": "ХЛЕБ НОРВЕЖСКИЙ",
-      "category": "Покупали",
-      "description": "Уникальный бездрожжевой хлеб из смеси ржано-пшеничной муки на медовой закваске с семенами подсолнечника, тыквы, мака и льна, который хорошо сочетается со сливочным маслом и любыми закусками",
-      "card": "",
-      "regular": "69",
-      "rating": "4",
-      "imgSrc": "https://vsedoma-family.ru/sites/default/files/styles/product/public/product/10cfbf1b21bb15e09c5ec4f29dccf93b.jpg?itok=wnFZ7vK-"
+      "imgSrc": "https://calorizator.ru/sites/default/files/imagecache/product_512/product/nestle-fitness-4.jpg",
+      "quantity": 1
     }
   ],
   "users": [

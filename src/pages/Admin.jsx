@@ -101,6 +101,7 @@ const Admin = () => {
     regular: '',
     rating: '',
     imgSrc: '',
+    quantity: 1,
   })
 
   /**

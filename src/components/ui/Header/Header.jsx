@@ -1,9 +1,9 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
-import styles from './Header.module.css'
 import useProductsStore from '../../../store/useProductsStore'
 import { AuthModal } from '../AuthModal/AuthModal'
 import { useAuth } from '../../../hooks/useAuth'
+import styles from './Header.module.css'
 
 /**
  * Компонент Шапка.
@@ -47,10 +47,18 @@ const Header = () => {
     setIsModal(false)
   }
 
-  // Достаем функцию которая показывает сохраненки
-  const { getFavoriteProducts } = useProductsStore()
+  // Количество сохраненных ранее товаров, корзины и общего кол-ва в корзине
+  const { getFavoriteProducts, getAllCartProducts, cart } =
+    useProductsStore()
+
+  // Стейт для хранения количества товаров в корзине
+  const [cartCount, setCartCount] = useState(0)
 
   const favoriteProducts = getFavoriteProducts()
+
+  useEffect(() => {
+    setCartCount(getAllCartProducts())
+  }, [cart, getAllCartProducts])
 
   // Показ страницы с сохраненками
   const handleOpenFavorites = () => {
@@ -218,6 +226,11 @@ const Header = () => {
                   ></path>
                 </svg>
                 <span>Корзина</span>
+                {!!cartCount && (
+                  <span className="absolute top-[-4px] right-[5px] bg-[#f63] text-white flex justify-center items-center px-1 font-size-[10px] leading-[14px] rounded-full border-2 border-white">
+                    {cartCount}
+                  </span>
+                )}
               </button>
 
               {user?.role === 'admin' && (
