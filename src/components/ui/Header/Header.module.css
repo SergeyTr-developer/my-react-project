@@ -37,11 +37,10 @@ a {
   padding: 8px;
   border: none;
   border-radius: 4px;
-  background: rgb(112, 192, 91);
+  background-color: rgb(112, 192, 91);
   color: rgb(255, 255, 255);
   font-size: 16px;
   font-weight: 400;
-  cursor: pointer;
 }
 
 .mr-8 {
@@ -73,7 +72,6 @@ a {
 .search-btn-icon {
   border: none;
   background-color: #ffff;
-  cursor: pointer;
 }
 
 .flex-wraper-button {
@@ -97,8 +95,11 @@ a {
   color: rgb(65, 65, 65);
   font-size: 12px;
   font-weight: 400;
-  cursor: pointer;
   position: relative;
+}
+
+.list-items-btn:hover {
+  color: #f63;
 }
 
 .favorites-counter {
@@ -133,10 +134,10 @@ a {
   font-size: 100%;
   color: rgb(35, 35, 35);
   background-color: transparent;
-  border: none;
+  border: 1px solid rgb(112, 192, 91);
   border-radius: 4px;
-  cursor: pointer;
   outline: none;
+  padding: 4px;
 }
 
 .pl-10 {

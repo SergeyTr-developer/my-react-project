@@ -143,17 +143,6 @@
       "imgSrc": "../assets/products/молоко ПРОСТОКВАШИНО.svg",
       "isFavorite": true,
       "quantity": 1
-    },
-    {
-      "id": "3f7c",
-      "name": "Батончик Nestle",
-      "category": "Акции",
-      "description": "Батончик Nestle Fitness с цельными злаками и клубникой",
-      "card": "57",
-      "regular": "75",
-      "rating": "5",
-      "imgSrc": "https://calorizator.ru/sites/default/files/imagecache/product_512/product/nestle-fitness-4.jpg",
-      "quantity": 1
     }
   ],
   "users": [

@@ -7,9 +7,6 @@ import { create } from 'zustand'
 const useProductsStore = create((set, get) => {
   // Инициализация переменной для хранения продуктов
   let products
-  let promotionsProducts
-  let newProducts
-  let purchasedProducts
 
   // Загрузка избранных продуктов из localStorage.
   const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || []
@@ -160,9 +157,6 @@ const useProductsStore = create((set, get) => {
 
   return {
     products,
-    promotionsProducts,
-    newProducts,
-    purchasedProducts,
     getProductById,
     onToggleFavorite,
     getFavoriteProducts,

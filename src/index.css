@@ -7,9 +7,22 @@
   margin: 0;
 }
 
+html,
 body {
+  height: 100%;
   font-family: 'Open-Sans', 'Inter', sans-serif;
   background-color: #fbf8ec;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+main {
+  flex-grow: 1;
 }
 
 .no-scroll {
@@ -51,4 +64,8 @@ img {
 
 .active svg path {
   stroke: #f63;
+}
+
+.hover\:active:hover {
+  color: #f63; /* цвет при наведении, если элемент не активен */
 }
