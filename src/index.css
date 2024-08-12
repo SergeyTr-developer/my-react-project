@@ -65,7 +65,3 @@ img {
 .active svg path {
   stroke: #f63;
 }
-
-.hover\:active:hover {
-  color: #f63; /* цвет при наведении, если элемент не активен */
-}

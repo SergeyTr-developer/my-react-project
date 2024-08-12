@@ -48,8 +48,7 @@ const Header = () => {
   }
 
   // Количество сохраненных ранее товаров, корзины и общего кол-ва в корзине
-  const { getFavoriteProducts, getAllCartProducts, cart } =
-    useProductsStore()
+  const { getFavoriteProducts, getAllCartProducts, cart } = useProductsStore()
 
   // Стейт для хранения количества товаров в корзине
   const [cartCount, setCartCount] = useState(0)
@@ -97,7 +96,11 @@ const Header = () => {
                 srcSet="/assets/products/logo-header-table.svg"
                 media="(max-width: 975px)"
               />
-              <img src="/assets/products/logo-header.svg" alt="logo-image" />
+              <img
+                className="max-w-none"
+                src="/assets/products/logo-header.svg"
+                alt="logo-image"
+              />
             </picture>
           </Link>
 
@@ -266,6 +269,7 @@ const Header = () => {
               >
                 <div>
                   <img
+                    className="max-w-none"
                     src="../assets/products/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
                     alt="avatar-image"
                   />
@@ -292,6 +296,7 @@ const Header = () => {
               >
                 <div>
                   <img
+                    className="max-w-none"
                     src="../assets/products/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
                     alt="avatar-image"
                   />

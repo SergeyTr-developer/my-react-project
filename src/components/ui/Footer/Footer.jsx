@@ -3,18 +3,19 @@ import styles from './Footer.module.css'
 
 /** Массив пунктов меню */
 const navItems = [
-  { name: 'О компании', path: '/AboutCompany' },
+  { name: 'О компании', path: '/aboutCompany' },
   { name: 'Контакты', path: '/contacts' },
   { name: 'Вакансии', path: '/vacancies' },
   { name: 'Статьи', path: '/articles' },
-  { name: 'Политика обработки персональных данных', path: '/PrivacyPolicy' },
+  { name: 'Политика обработки персональных данных', path: '/dataProcessing' },
 ]
 
 const Footer = () => {
   const isActiveLink = (path) => {
     return (
       location?.pathname === path ||
-      (path === '/cards' && location?.pathname?.startsWith('/cards'))
+      (path === '/aboutCompany' &&
+        location?.pathname?.startsWith('/aboutCompany'))
     )
     // return location?.pathname === path; // Если нет вложенных страниц
   }
@@ -42,8 +43,8 @@ const Footer = () => {
                   <NavLink
                     to={item.path}
                     key={item.path}
-                    className={` ${
-                      isActiveLink(item?.path) ? 'active' : 'hover:active'
+                    className={`${styles['nav-link']} ${
+                      isActiveLink(item?.path) ? 'nav-link-active' : ''
                     }`}
                   >
                     {item.name}

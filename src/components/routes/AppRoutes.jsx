@@ -6,6 +6,11 @@ import FavoritesList from '../../pages/FavoritesList'
 import Admin from '../../pages/Admin'
 import Cart from '../../pages/Cart'
 import PrivateRoute from './PrivateRoute'
+import AboutCompany from '../../pages/AboutCompany'
+import Contacts from '../../pages/Contacts'
+import Vacancies from '../../pages/Vacancies'
+import Articles from '../../pages/Articles'
+import DataProcessing from '../../pages/DataProcessing'
 
 /** Массив роутов приложения */
 const routes = [
@@ -19,6 +24,11 @@ const routes = [
   { path: 'cards/:id', element: <CardDetail /> },
   { path: 'favorites', element: <FavoritesList /> },
   { path: 'cart', element: <Cart /> },
+  { path: 'aboutCompany', element: <AboutCompany /> },
+  { path: 'contacts', element: <Contacts /> },
+  { path: 'vacancies', element: <Vacancies /> },
+  { path: 'articles', element: <Articles /> },
+  { path: 'dataProcessing', element: <DataProcessing /> },
 ]
 
 /**
