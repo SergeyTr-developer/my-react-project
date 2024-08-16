@@ -258,7 +258,7 @@ const Header = () => {
                     ></path>
                   </svg>
 
-                  <span className="font-black">Админ</span>
+                  <span className="font-black ">Админка</span>
                 </button>
               )}
             </div>
@@ -267,54 +267,19 @@ const Header = () => {
                 onClick={handleOpenModal}
                 className={styles['authorization-button']}
               >
-                <div>
-                  <img
-                    className="max-w-none"
-                    src="../assets/products/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
-                    alt="avatar-image"
-                  />
-                </div>
+                <span className="w-10 h-10"></span>
                 <span>Войти</span>
-                <svg
-                  className={styles['pl-10']}
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="rgb(35, 35, 35)"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  width="24"
-                  height="24"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
+                <span className="w-10 h-10"></span>
               </button>
             ) : (
               <button
                 onClick={onLogout}
                 className={styles['authorization-button']}
               >
-                <div>
-                  <img
-                    className="max-w-none"
-                    src="../assets/products/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
-                    alt="avatar-image"
-                  />
-                </div>
-                <span>{user.name}</span>
-                <svg
-                  className={styles['pl-10']}
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="rgb(35, 35, 35)"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  width="24"
-                  height="24"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
+                <span className="w-10 h-10"></span>
+
+                {user?.role === 'admin' ? 'Админ' : user?.name}
+                <span className="w-10 h-10"></span>
               </button>
             )}
           </div>

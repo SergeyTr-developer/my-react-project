@@ -41,8 +41,6 @@ const Home = () => {
     })
   }
 
-  
-
   return (
     <>
       <Banner />

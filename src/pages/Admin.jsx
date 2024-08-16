@@ -4,8 +4,17 @@ import { Drawer } from '../components/ui/Drawer/Drawer'
 import Table from '../components/ui/Table/Table'
 import useItemsStore from '../store/useItemsStore'
 import { Alert } from '../components/ui/Alert/Alert'
+import Select from '../components/ui/Select/Select'
 
 const Admin = () => {
+  // Категория товаров для выпадающего списка
+  const productsCategory = [
+    { name: 'Выберите категорию:', value: 'Выберите категорию:' },
+    { name: 'Акции', value: 'Акции' },
+    { name: 'Новинки', value: 'Новинки' },
+    { name: 'Популярные товары', value: 'Популярные товары' },
+  ]
+
   // Стейт для скрытия/показа компонента Drawer
   const [isDrawerOpen, setDrawerOpen] = useState(false)
 
@@ -44,6 +53,21 @@ const Admin = () => {
    */
   const handleFormSubmit = (event) => {
     event.preventDefault()
+
+    // Проверка, что категория выбрана корректно
+    if (
+      !formValues.name ||
+      !formValues.category ||
+      formValues.category === 'Выберите категорию:'
+    ) {
+      setDrawerOpen(false)
+      setAlertState({
+        isOpen: true,
+        message:
+          'Пожалуйста, заполните название товара и выберите корректную категорию.',
+      })
+      return // Останавливаем выполнение функции, если обязательные поля не заполнены
+    }
 
     if (selectedValue) {
       // Если товар выбран, редактируем его
@@ -197,7 +221,7 @@ const Admin = () => {
                     Название товара
                   </label>
                   <input
-                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
                     name="name"
                     type="text"
                     defaultValue={selectedValue?.name || formValues?.name}
@@ -207,22 +231,15 @@ const Admin = () => {
                   />
                 </div>
                 <div className="mb-4">
-                  <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="category"
-                  >
-                    Категория товара
-                  </label>
-                  <input
-                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  <Select
+                    onChange={handleInput}
+                    label="Категория товара"
+                    options={productsCategory}
                     name="category"
-                    type="text"
                     defaultValue={
                       selectedValue?.category || formValues?.category
                     }
-                    onChange={handleInput}
-                    placeholder="Введите категорию"
-                    readOnly={!isEditing}
+                    disabled={!isEditing}
                   />
                 </div>
                 <div className="mb-4">
@@ -232,8 +249,8 @@ const Admin = () => {
                   >
                     Описание товара
                   </label>
-                  <input
-                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  <textarea
+                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline resize-none"
                     name="description"
                     type="text"
                     defaultValue={
@@ -253,7 +270,7 @@ const Admin = () => {
                     Цена по карте
                   </label>
                   <input
-                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
                     name="card"
                     type="number"
                     defaultValue={selectedValue?.card || formValues?.card}
@@ -271,7 +288,7 @@ const Admin = () => {
                     Обычная цена
                   </label>
                   <input
-                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
                     name="regular"
                     type="number"
                     defaultValue={selectedValue?.regular || formValues?.regular}
@@ -289,7 +306,7 @@ const Admin = () => {
                     Рейтинг
                   </label>
                   <input
-                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
                     name="rating"
                     type="number"
                     defaultValue={selectedValue?.rating || formValues?.rating}
@@ -307,7 +324,7 @@ const Admin = () => {
                     Изображение
                   </label>
                   <input
-                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
                     name="imgSrc"
                     type="url"
                     defaultValue={selectedValue?.imgSrc || formValues?.imgSrc}

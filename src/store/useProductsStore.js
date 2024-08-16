@@ -42,7 +42,7 @@ const useProductsStore = create((set, get) => {
       )
 
       const purchasedProducts = products.filter(
-        (product) => product.category === 'Покупали'
+        (product) => product.category === 'Популярные товары'
       )
 
       set({ products, promotionsProducts, newProducts, purchasedProducts })
