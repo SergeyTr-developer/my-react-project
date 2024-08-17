@@ -4,6 +4,7 @@ import { Alert } from '../components/ui/Alert/Alert'
 import { DoubleSlider } from '../components/ui/DoubleSlider/DoubleSlider'
 import { SwitchToggle } from '../components/ui/SwitchToggle/SwitchToggle'
 import useProductsStore from '../store/useProductsStore'
+import useItemsStore from '../store/useItemsStore'
 import styles from '../styles/pages/FavoritesList.module.css'
 
 const FavoritesList = () => {
@@ -11,13 +12,21 @@ const FavoritesList = () => {
   const { getFavoriteProducts, onToggleFavorite, getProductById } =
     useProductsStore()
 
+  // Извлекаем функцию filteredProducts из хука useItemsStore,
+  // которая предназначена для фильтрации списка продуктов на основе заданных критериев
+  const { filteredProducts } = useItemsStore()
+
+  // Вызываем функцию для показа сохраненок
+  const favoritesProducts = getFavoriteProducts()
+
+  // Получаем отфильтрованный список продуктов, используя функцию filteredProducts.
+  // Передаем в эту функцию массив избранных продуктов
+  const filterFavoritesProducts = filteredProducts(favoritesProducts)
+
   // // Локальное состояние для избранных продуктов
   // const [favoritesProducts, setFavoritesProducts] = useState(
   //   getFavoriteProducts()
   // )
-
-  // Вызываем функцию для показа сохраненок
-  const favoritesProducts = getFavoriteProducts()
 
   // Стейт для скрытия/показа и передачи сообщения в Alert
   const [alertState, setAlertState] = useState({
@@ -164,8 +173,9 @@ const FavoritesList = () => {
                 </button>
               </div>
               <div className={`${styles['favorites-flex-cards']} mb-28`}>
-                {!!favoritesProducts && favoritesProducts.length > 0 ? (
-                  favoritesProducts.map((product) => (
+                {!!filterFavoritesProducts &&
+                filterFavoritesProducts.length > 0 ? (
+                  filterFavoritesProducts.map((product) => (
                     <Card
                       key={product.id}
                       details={product}

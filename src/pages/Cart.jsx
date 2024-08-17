@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import useProductsStore from '../store/useProductsStore'
+import useItemsStore from '../store/useItemsStore'
 import { Alert } from '../components/ui/Alert/Alert'
 import Stepper from '../components/ui/Stepper/Stepper'
 import styles from '../styles/pages/Cart.module.css'
@@ -13,6 +14,14 @@ const Cart = () => {
 
   // Получение данных из стора (корзина товаров)
   const { cart, deleteProductFromCart } = useProductsStore()
+
+  // Извлекаем функцию filteredProducts из хука useItemsStore,
+  // которая предназначена для фильтрации списка продуктов на основе заданных критериев
+  const { filteredProducts } = useItemsStore()
+
+  // Получаем отфильтрованный список продуктов, используя функцию filteredProducts.
+  // Передаем в эту функцию массив продуктов в корзине.
+  const shoppingCart = filteredProducts(cart)
 
   // Обработчик закрытия компонента Alert
   const handleCloseAlert = () => {
@@ -36,11 +45,11 @@ const Cart = () => {
       <div className="container">
         {}
         <h1 className={styles['cart-title']}>
-          {!cart?.length ? 'Корзина пуста' : 'Корзина'}
+          {!shoppingCart?.length ? 'Корзина пуста' : 'Корзина'}
         </h1>
-        {cart?.length > 0 && (
+        {shoppingCart?.length > 0 && (
           <div className={styles['cart-flex-container']}>
-            {cart?.map((item) => (
+            {shoppingCart?.map((item) => (
               <div key={crypto?.randomUUID()}>
                 <div className={styles['cart-flex-wrapper']}>
                   <div></div>

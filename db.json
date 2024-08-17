@@ -242,6 +242,17 @@
       "rating": "5",
       "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/49/703/49703.webp",
       "quantity": 1
+    },
+    {
+      "id": "d2e4",
+      "name": "Сухарики",
+      "category": "Новинки",
+      "description": "Сухарики «Кириешки Light» Семга с сыром, 80 г",
+      "card": "",
+      "regular": "26.99",
+      "rating": "5",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/52/472/52472.webp",
+      "quantity": 1
     }
   ],
   "users": [

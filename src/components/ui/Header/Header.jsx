@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import useProductsStore from '../../../store/useProductsStore'
 import { AuthModal } from '../AuthModal/AuthModal'
 import { useAuth } from '../../../hooks/useAuth'
+import useItemsStore from '../../../store/useItemsStore'
 import styles from './Header.module.css'
 
 /**
@@ -15,6 +16,8 @@ const Header = () => {
   const navigate = useNavigate() // хук для роутинга
 
   const { user, onLogout } = useAuth()
+
+  const { searchValue, handleSearchChange } = useItemsStore()
 
   const bodyRef = useRef(document.body)
 
@@ -121,6 +124,8 @@ const Header = () => {
               <input
                 className={styles['search__input']}
                 type="text"
+                value={searchValue}
+                onChange={handleSearchChange}
                 placeholder="Найти товар"
               />
               <button className={styles['search-btn-icon']}>

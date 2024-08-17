@@ -6,13 +6,18 @@ import { create } from 'zustand'
  */
 const useProductsStore = create((set, get) => {
   // Инициализация переменной для хранения продуктов
-  let products
+
+  let products = []
 
   // Загрузка избранных продуктов из localStorage.
   const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || []
 
   // Загрузка товаров корзины из localStorage.
   const storedCart = JSON?.parse(localStorage?.getItem('cart')) || []
+
+  // /**
+  //  * Асинхронная функция для получения списка товаров и обновления состояния.
+  //  */
 
   ;(async () => {
     try {
@@ -32,20 +37,7 @@ const useProductsStore = create((set, get) => {
         isFavorite: storedFavorites?.includes(product?.id),
       }))
 
-      // Карточки товара по категориям
-      const promotionsProducts = products.filter(
-        (product) => product.category === 'Акции'
-      )
-
-      const newProducts = products.filter(
-        (product) => product.category === 'Новинки'
-      )
-
-      const purchasedProducts = products.filter(
-        (product) => product.category === 'Популярные товары'
-      )
-
-      set({ products, promotionsProducts, newProducts, purchasedProducts })
+      set({ products })
     } catch (error) {
       console.error('Error fetching products')
     }

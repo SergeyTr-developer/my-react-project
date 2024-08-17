@@ -3,17 +3,20 @@ import { Card } from '../components/ui/Card/Card.jsx'
 import { Alert } from '../components/ui/Alert/Alert.jsx'
 import { Banner } from '../components/ui/Banner/Banner.jsx'
 import useProductsStore from '../store/useProductsStore.js'
+import useItemsStore from '../store/useItemsStore.js'
 import styles from '../components/ui/Card/Card.module.css'
 
 const Home = () => {
   // Стор для работы с продуктами
-  const {
-    promotionsProducts,
-    newProducts,
-    purchasedProducts,
-    onToggleFavorite,
-    getProductById,
-  } = useProductsStore()
+  const { products, onToggleFavorite, getProductById } = useProductsStore()
+
+  // Извлекаем функцию filteredProducts из хука useItemsStore,
+  // которая предназначена для фильтрации списка продуктов на основе заданных критериев
+  const { filteredProducts } = useItemsStore()
+
+  // Получаем отфильтрованный список продуктов, используя функцию filteredProducts.
+  // Передаем в эту функцию массив продуктов
+  const productsList = filteredProducts(products)
 
   // Стейт для скрытия/показа и передачи сообщения в Alert
   const [alertState, setAlertState] = useState({
@@ -69,14 +72,16 @@ const Home = () => {
             </div>
           </div>
           <div className={styles['cards-flex-wraper']}>
-            {!!promotionsProducts &&
-              promotionsProducts.map((product) => (
-                <Card
-                  key={product?.id}
-                  details={product}
-                  onHeartClick={handleFavoriteAndShowAlert}
-                />
-              ))}
+            {!!productsList &&
+              productsList
+                .filter((product) => product.category === 'Акции') // Фильтруем продукты по категории
+                .map((product) => (
+                  <Card
+                    key={product?.id}
+                    details={product}
+                    onHeartClick={handleFavoriteAndShowAlert}
+                  />
+                ))}
           </div>
         </div>
       </section>
@@ -106,14 +111,16 @@ const Home = () => {
             </div>
           </div>
           <div className={styles['cards-flex-wraper']}>
-            {!!newProducts &&
-              newProducts.map((product) => (
-                <Card
-                  key={product?.id}
-                  details={product}
-                  onHeartClick={handleFavoriteAndShowAlert}
-                />
-              ))}
+            {!!productsList &&
+              productsList
+                .filter((product) => product.category === 'Новинки') // Фильтруем продукты по категории
+                .map((product) => (
+                  <Card
+                    key={product?.id}
+                    details={product}
+                    onHeartClick={handleFavoriteAndShowAlert}
+                  />
+                ))}
           </div>
         </div>
       </section>
@@ -143,14 +150,16 @@ const Home = () => {
             </div>
           </div>
           <div className={styles['cards-flex-wraper']}>
-            {!!purchasedProducts &&
-              purchasedProducts.map((product) => (
-                <Card
-                  key={product?.id}
-                  details={product}
-                  onHeartClick={handleFavoriteAndShowAlert}
-                />
-              ))}
+            {!!productsList &&
+              productsList
+                .filter((product) => product.category === 'Популярные товары') // Фильтруем продукты по категории
+                .map((product) => (
+                  <Card
+                    key={product?.id}
+                    details={product}
+                    onHeartClick={handleFavoriteAndShowAlert}
+                  />
+                ))}
           </div>
         </div>
       </section>

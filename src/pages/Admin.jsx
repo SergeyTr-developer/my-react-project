@@ -38,7 +38,21 @@ const Admin = () => {
   const [isEditing, setIsEditing] = useState(false)
 
   // Стор для CRUD операций.
-  const { items, fetchItems, addItem, editItem, deleteItem } = useItemsStore()
+  const { items, filteredProducts, fetchItems, addItem, editItem, deleteItem } =
+    useItemsStore()
+
+  console.log(items)
+
+  // Получаем отфильтрованный список продуктов, используя функцию filteredProducts.
+  // Передаем в эту функцию массив продуктов.
+  const productsList = filteredProducts(items)
+
+  /**
+   * Эффект, который вызывается при монтировании компонента или изменении функции fetchItems.
+   * Выполняет запрос на получение данных продуктов.
+   *
+   * Зависимость: `fetchItems` — функция для получения списка продуктов.
+   */
 
   useEffect(() => {
     fetchItems()
@@ -195,7 +209,7 @@ const Admin = () => {
             { key: 'card', title: 'Цена по карте' },
             { key: 'regular', title: 'Обычная цена' },
           ]}
-          data={items}
+          data={productsList}
           onRowDoubleClick={handleRowDoubleClick}
         />
 

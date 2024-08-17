@@ -1,11 +1,17 @@
 import { create } from 'zustand'
 
 /* Абстрактный стор */
-const useItemsStore = create((set) => {
+const useItemsStore = create((set, get) => {
   /**
    * Состояние списка товаров.
    */
   const items = []
+
+  /**
+   * Хранит текущее значение поля поиска.
+   * @type {string}
+   */
+  const searchValue = ''
 
   /**
    * Асинхронная функция для получения списка товаров и обновления состояния.
@@ -114,12 +120,47 @@ const useItemsStore = create((set) => {
     }
   }
 
+  /**
+   * Обрабатывает изменение значения в поле поиска.
+   * Обновляет состояние переменной searchValue.
+   *
+   * @param {Object} e - Событие изменения инпута.
+   * @param {Object} e.target - Целевой элемент события.
+   * @param {string} e.target.value - Новое значение поля поиска.
+   */
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value
+    set({ searchValue: value })
+  }
+
+  /**
+   * Фильтрует список продуктов на основе значения поиска.
+   *
+   * @returns {Array} Отфильтрованный массив продуктов. Если searchValue пуст, возвращает все продукты.
+   */
+
+  const filteredProducts = (items) => {
+    const { searchValue } = get()
+
+    // Если значение поиска пустое, возвращаем все продукты.
+    if (!searchValue) return items
+
+    // Фильтруем продукты по имени, игнорируя регистр.
+    return items.filter((item) =>
+      item.name.toLowerCase().includes(searchValue.toLowerCase())
+    )
+  }
+
   return {
     items,
+    searchValue,
     fetchItems,
     addItem,
     editItem,
     deleteItem,
+    handleSearchChange,
+    filteredProducts,
   }
 })
 
