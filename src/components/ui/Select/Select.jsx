@@ -145,7 +145,7 @@ const Select = ({
             <div
               key={index}
               onClick={() => handleOptionClick(option)}
-              className="cursor-pointer p-2 hover:bg-gray-100 rounded-md"
+              className="cursor-pointer p-2 hover:bg-orange-100 rounded-md"
             >
               {option?.value}
             </div>

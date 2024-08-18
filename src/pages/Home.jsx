@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Card } from '../components/ui/Card/Card.jsx'
 import { Alert } from '../components/ui/Alert/Alert.jsx'
 import { Banner } from '../components/ui/Banner/Banner.jsx'
+import Shops from '../components/Shops/Shops.jsx'
 import useProductsStore from '../store/useProductsStore.js'
 import useItemsStore from '../store/useItemsStore.js'
 import styles from '../components/ui/Card/Card.module.css'
@@ -47,10 +48,10 @@ const Home = () => {
   return (
     <>
       <Banner />
-      <section className="mb-120">
+      <section className="mb-28">
         <div className="container">
           <div className="heading">
-            <h1>Акции</h1>
+            <h1 className="text-4xl font-bold text-neutral-700">Акции</h1>
             <div>
               <button className={styles['cards-button-list']}>
                 Все акции
@@ -72,7 +73,7 @@ const Home = () => {
             </div>
           </div>
           <div className={styles['cards-flex-wraper']}>
-            {!!productsList &&
+            {!!productsList && productsList.length > 0 ? (
               productsList
                 .filter((product) => product.category === 'Акции') // Фильтруем продукты по категории
                 .map((product) => (
@@ -81,15 +82,18 @@ const Home = () => {
                     details={product}
                     onHeartClick={handleFavoriteAndShowAlert}
                   />
-                ))}
+                ))
+            ) : (
+              <span className="text-2xl">Товар отсутствует</span>
+            )}
           </div>
         </div>
       </section>
 
-      <section className="mb-120">
+      <section className="mb-28">
         <div className="container">
           <div className="heading">
-            <h1>Новинки</h1>
+            <h1 className="text-4xl font-bold text-neutral-700">Новинки</h1>
             <div>
               <button className={styles['cards-button-list']}>
                 Все новинки
@@ -111,7 +115,7 @@ const Home = () => {
             </div>
           </div>
           <div className={styles['cards-flex-wraper']}>
-            {!!productsList &&
+            {!!productsList && productsList.length > 0 ? (
               productsList
                 .filter((product) => product.category === 'Новинки') // Фильтруем продукты по категории
                 .map((product) => (
@@ -120,15 +124,20 @@ const Home = () => {
                     details={product}
                     onHeartClick={handleFavoriteAndShowAlert}
                   />
-                ))}
+                ))
+            ) : (
+              <span className="text-2xl">Товар отсутствует</span>
+            )}
           </div>
         </div>
       </section>
 
-      <section className="mb-120">
+      <section className="mb-28">
         <div className="container">
           <div className="heading">
-            <h1>Покупали раньше</h1>
+            <h1 className="text-4xl font-bold text-neutral-700">
+              Покупали раньше
+            </h1>
             <div>
               <button className={styles['cards-button-list']}>
                 Все покупки
@@ -150,7 +159,7 @@ const Home = () => {
             </div>
           </div>
           <div className={styles['cards-flex-wraper']}>
-            {!!productsList &&
+            {!!productsList && productsList.length > 0 ? (
               productsList
                 .filter((product) => product.category === 'Популярные товары') // Фильтруем продукты по категории
                 .map((product) => (
@@ -159,9 +168,16 @@ const Home = () => {
                     details={product}
                     onHeartClick={handleFavoriteAndShowAlert}
                   />
-                ))}
+                ))
+            ) : (
+              <span className="text-2xl">Товар отсутствует</span>
+            )}
           </div>
         </div>
+      </section>
+
+      <section>
+        <Shops />
       </section>
 
       <Alert

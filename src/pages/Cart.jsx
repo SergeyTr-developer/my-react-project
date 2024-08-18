@@ -43,7 +43,6 @@ const Cart = () => {
   return (
     <section>
       <div className="container">
-        {}
         <h1 className={styles['cart-title']}>
           {!shoppingCart?.length ? 'Корзина пуста' : 'Корзина'}
         </h1>

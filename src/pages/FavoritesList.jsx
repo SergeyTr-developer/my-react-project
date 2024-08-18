@@ -172,7 +172,7 @@ const FavoritesList = () => {
                   </svg>
                 </button>
               </div>
-              <div className={`${styles['favorites-flex-cards']} mb-28`}>
+              <div className={`${styles['favorites-flex-cards']} `}>
                 {!!filterFavoritesProducts &&
                 filterFavoritesProducts.length > 0 ? (
                   filterFavoritesProducts.map((product) => (

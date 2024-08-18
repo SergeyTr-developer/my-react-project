@@ -44,18 +44,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: rgb(65, 65, 65);
-  font-size: 24px;
-  font-weight: 700;
   margin-bottom: 40px;
-}
-
-.mb-80 {
-  margin-bottom: 80px;
-}
-
-.mb-120 {
-  margin-bottom: 120px;
 }
 
 .active {

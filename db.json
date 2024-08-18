@@ -244,7 +244,7 @@
       "quantity": 1
     },
     {
-      "id": "d2e4",
+      "id": "68bf",
       "name": "Сухарики",
       "category": "Новинки",
       "description": "Сухарики «Кириешки Light» Семга с сыром, 80 г",
@@ -252,6 +252,28 @@
       "regular": "26.99",
       "rating": "5",
       "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/52/472/52472.webp",
+      "quantity": 1
+    },
+    {
+      "id": "d6bf",
+      "name": "Драже фруктовые",
+      "category": "Акции",
+      "description": "Драже фруктовые «Skittles» Кисломикс, 70 г",
+      "card": "60.99",
+      "regular": "89.99",
+      "rating": "5",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/47/502/47502.webp",
+      "quantity": 1
+    },
+    {
+      "id": "1681",
+      "name": "Торт Бенто",
+      "category": "Новинки",
+      "description": "Торт Бенто Фисташковый с Малиной 500г",
+      "card": "",
+      "regular": "699.00",
+      "rating": "4",
+      "imgSrc": "https://s.myspar.ru/upload/resize_cache/img/10/1014/bcbc5cf022fc52f242999bb3a3f42a1c/101413576.webp?1723235336",
       "quantity": 1
     }
   ],

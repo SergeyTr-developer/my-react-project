@@ -41,8 +41,6 @@ const Admin = () => {
   const { items, filteredProducts, fetchItems, addItem, editItem, deleteItem } =
     useItemsStore()
 
-  console.log(items)
-
   // Получаем отфильтрованный список продуктов, используя функцию filteredProducts.
   // Передаем в эту функцию массив продуктов.
   const productsList = filteredProducts(items)

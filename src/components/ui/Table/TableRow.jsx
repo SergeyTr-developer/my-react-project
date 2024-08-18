@@ -20,7 +20,7 @@ const TableRow = ({ rowData, onDoubleClick }) => {
   return (
     <div className="container">
       <div
-        className="flex flex-row cursor-pointer hover:bg-gray-200"
+        className="flex flex-row cursor-pointer hover:bg-orange-100"
         onDoubleClick={() => onDoubleClick(rowData)}
       >
         {rowValues?.map((value, index) => (

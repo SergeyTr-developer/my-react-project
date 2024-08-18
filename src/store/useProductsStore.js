@@ -15,9 +15,9 @@ const useProductsStore = create((set, get) => {
   // Загрузка товаров корзины из localStorage.
   const storedCart = JSON?.parse(localStorage?.getItem('cart')) || []
 
-  // /**
-  //  * Асинхронная функция для получения списка товаров и обновления состояния.
-  //  */
+  /**
+   * Асинхронная функция для получения списка товаров и обновления состояния.
+   */
 
   ;(async () => {
     try {
