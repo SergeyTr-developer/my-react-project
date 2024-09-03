@@ -282,8 +282,7 @@ const Header = () => {
                 className={styles['authorization-button']}
               >
                 <span className="w-10 h-10"></span>
-
-                {user?.role === 'admin' ? 'Админ' : user?.name}
+                <span>Выйти</span>
                 <span className="w-10 h-10"></span>
               </button>
             )}

@@ -17,13 +17,13 @@ const Shops = () => {
         <h1 className="text-4xl font-bold text-neutral-700 mb-10">
           Наши магазины
         </h1>
-        <div className="flex gap-6 mb-6">
+        <div className="flex flex-wrap gap-6 mb-6">
           {navItems.map((item, index) => {
             return (
               <button
                 key={index}
                 className={`p-2 rounded bg-gray-100 text-sm font-normal text-neutral-600 ${
-                  isActiveButton === index ? 'bg-green-400 text text-white' : ''
+                  isActiveButton === index ? 'bg-green-600 text text-white' : ''
                 }`}
                 onClick={() => setIsActiveButton(index)}
               >

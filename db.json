@@ -275,6 +275,17 @@
       "rating": "4",
       "imgSrc": "https://s.myspar.ru/upload/resize_cache/img/10/1014/bcbc5cf022fc52f242999bb3a3f42a1c/101413576.webp?1723235336",
       "quantity": 1
+    },
+    {
+      "id": "28c9",
+      "name": "Батончик мюсли",
+      "category": "Акции",
+      "description": "Батончик мюсли FITNESS злаковый шоколад-банан,витамины, 24штx23.5...",
+      "card": "70",
+      "regular": "90",
+      "rating": "4",
+      "imgSrc": "https://komus-opt.ru/upload/iblock/bf2/1355932_002_10.jpg",
+      "quantity": 1
     }
   ],
   "users": [

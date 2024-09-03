@@ -70,7 +70,7 @@
 
 .price-desc-card {
   color: rgb(191, 191, 191);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 24px;
 }
@@ -85,7 +85,7 @@
 
 .price-desc-regular {
   color: rgb(191, 191, 191);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 24px;
 }
@@ -113,17 +113,9 @@
   align-items: center;
   padding: 8px;
   box-sizing: border-box;
-  border: 1px solid rgb(112, 192, 91);
   border-radius: 4px;
-  color: #70c05b;
   font-size: 100%;
-  background-color: transparent;
-  cursor: pointer;
-  transition-duration: 0.4s;
-}
-
-.card-btn:hover {
-  background-color: rgb(255, 102, 51);
+  background-color: #70c05b;
   color: #ffff;
 }
 

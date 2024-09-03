@@ -57,28 +57,28 @@ const Footer = () => {
             <div className={styles['footer-social-box']}>
               <button>
                 <img
-                  className="max-w-none"
+                  className="max-w-none w-6 h-6"
                   src="../assets/products/instagram.svg"
                   alt="instagram-picture"
                 />
               </button>
               <button>
                 <img
-                  className="max-w-none"
+                  className="max-w-none w-6 h-4"
                   src="../assets/products/vk.svg"
                   alt="vk-picture"
                 />
               </button>
               <button>
                 <img
-                  className="max-w-none"
+                  className="max-w-none w-6 h-6"
                   src="../assets/products/facebook.svg"
                   alt="facebook-picture"
                 />
               </button>
               <button>
                 <img
-                  className="max-w-none"
+                  className="max-w-none w-4 h-6"
                   src="../assets/products/ok.svg"
                   alt="ok-picture"
                 />

@@ -131,12 +131,10 @@ a {
   align-items: center;
   gap: 10px;
   font-size: 100%;
-  color: rgb(35, 35, 35);
   font-weight: bold;
-  background-color: transparent;
-  border: 1px solid rgb(112, 192, 91);
   border-radius: 4px;
-  outline: none;
   padding: 8px;
   font-style: italic;
+  background-color: #f63;
+  color: #fff;
 }

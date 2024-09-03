@@ -1,3 +1,4 @@
+import SwiperComponent from '../../../libs/swiper/SwiperComponent'
 import styles from './Banner.module.css'
 
 export const Banner = () => {
@@ -24,11 +25,13 @@ export const Banner = () => {
                 />
               </picture>
             </div>
-            <div className={styles['banner__text']}>
+
+            {/* <div className={styles['banner__text']}>
               <h1 className="text-6xl text-neutral-700">
                 Доставка бесплатно от 1000 ₽
               </h1>
-            </div>
+            </div> */}
+            <SwiperComponent />
           </div>
         </div>
       </div>

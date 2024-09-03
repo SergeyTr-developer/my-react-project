@@ -27,7 +27,7 @@
 .footer-nav-flex {
   display: flex;
   gap: 40px;
-  font-size: 12px;
+  font-size: 14px;
   color: rgb(65, 65, 65);
   font-weight: 400;
   flex-wrap: wrap;
@@ -62,13 +62,13 @@
 }
 
 .tel-btn-flex:hover {
-  color: #f63;
+  color: rgb(255, 70, 8);
 }
 
 .nav-link-active {
-  color: #f63;
+  color: rgb(255, 70, 8);
 }
 
 .nav-link:hover {
-  color: #f63;
+  color: rgb(255, 70, 8);
 }

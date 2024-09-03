@@ -93,7 +93,6 @@
   border-radius: 4px;
   box-shadow: 4px 8px 16px 0px rgba(112, 192, 91, 0.2);
   letter-spacing: 4px;
-  
 }
 
 .tel-input::placeholder {
@@ -110,8 +109,8 @@
   align-items: center;
   padding: 16px;
   border-radius: 4px;
-  background: rgb(252, 213, 186);
-  color: rgb(255, 102, 51);
+  background-color: #f63;
+  color: #ffff;
   font-size: 24px;
   font-weight: 400;
   border: none;
