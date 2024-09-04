@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Card } from '../components/ui/Card/Card.jsx'
 import { Alert } from '../components/ui/Alert/Alert.jsx'
 import { Banner } from '../components/ui/Banner/Banner.jsx'
@@ -8,6 +9,8 @@ import useItemsStore from '../store/useItemsStore.js'
 import styles from '../components/ui/Card/Card.module.css'
 
 const Home = () => {
+  const navigate = useNavigate() // хук для роутинга
+
   // Стор для работы с продуктами
   const { products, onToggleFavorite, getProductById } = useProductsStore()
 
@@ -45,6 +48,11 @@ const Home = () => {
     })
   }
 
+  // Обработчик клика по карточке
+  const handleCardClick = (id) => {
+    navigate(`/cards/${id}`)
+  }
+
   return (
     <>
       <Banner />
@@ -80,6 +88,7 @@ const Home = () => {
                   <Card
                     key={product?.id}
                     details={product}
+                    onCardClick={handleCardClick}
                     onHeartClick={handleFavoriteAndShowAlert}
                   />
                 ))
@@ -122,6 +131,7 @@ const Home = () => {
                   <Card
                     key={product?.id}
                     details={product}
+                    onCardClick={handleCardClick}
                     onHeartClick={handleFavoriteAndShowAlert}
                   />
                 ))
@@ -166,6 +176,7 @@ const Home = () => {
                   <Card
                     key={product?.id}
                     details={product}
+                    onCardClick={handleCardClick}
                     onHeartClick={handleFavoriteAndShowAlert}
                   />
                 ))

@@ -1,46 +1,75 @@
-import { useParams } from "react-router-dom";
-import { initialProducts } from "../../data.js";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import useProductsStore from '../store/useProductsStore'
+import { Link } from 'react-router-dom'
+import { IoIosArrowBack } from 'react-icons/io'
+// import Alert from '../components/ui/Alert/Alert'
+import { Alert } from '../components/ui/Alert/Alert'
 
 const CardDetail = () => {
-  const [isFavorite, setFavorite] = useState(false); // Стейт для того, чтобы пометить товар сохраненным или нет.
+  // Получение id из адресной строки через React-router-dom
+  const { id } = useParams()
 
-  const { id } = useParams();
+  // Стор для работы с продуктами
+  const { getProductById, onToggleFavorite, addToCart } = useProductsStore()
+
+  // Стейт для показа/скрытия и передачи сообщения в Alert
+  //   const [alertState, setAlertState] = useState({
+  //     isOpen: false,
+  //     title: '',
+  //     subtitle: '',
+  //   })
+
+  const [alertState, setAlertState] = useState({
+    isOpen: false,
+    message: '',
+  })
+
+  // Обработчик закрытия компонента Alert
+  const handleCloseAlert = () => {
+    setAlertState({ ...alertState, isOpen: false })
+  }
 
   // Находим карточку по id.
-  const product = initialProducts?.find((product) => product?.id === id);
+  const product = getProductById(id)
 
-  useEffect(() => {
-    // Получаем данные из localStorage
-    const storedFavoriteProducts = localStorage.getItem("favorite");
-
-    // Если данные есть в localStorage, устанавливаем начальное состояние продуктов
-    if (storedFavoriteProducts) {
-      const favoriteProducts = JSON.parse(storedFavoriteProducts);
-
-      const isProductInStorage = favoriteProducts.includes(id);
-
-      // Обновляем стейт сохраненным товаром.
-      setFavorite(isProductInStorage);
-    }
-  }, []);
+  // Обработчик добавления товара в корзину
+  const handleAddToCart = () => {
+    addToCart(product)
+    setAlertState({
+      isOpen: true,
+      message: 'Товар успешно добавлен в корзину.',
+    })
+  }
 
   return (
-    <section className="card-details">
-      <div className="container mx-auto p-4">
+    <section className="card-details mt-5">
+      <div className="container">
         <Link
-          to="/cards"
-          className=" text-gray-600 hover:text-gray-900 mb-8 inline-flex"
+          to="/"
+          className="inline-flex text-orange-700 hover:text-orange-800 mb-8"
         >
-          Вернуться назад
+          <IoIosArrowBack className="mr-1 w-5 h-5" />
+          Назад
         </Link>
+        <h2 className="mb-4 text-4xl font-bold text-zinc-800">
+          {product?.name}
+        </h2>
         <div className="max-w-md rounded shadow-lg relative">
-          <img className="w-full" src={product?.imgSrc} alt={product?.title} />
+          <div className="relative">
+            <div className="absolute inset-0   rounded"></div>
+            <img
+              className="w-full rounded"
+              src={product?.imgSrc}
+              alt={product?.title}
+            />
+          </div>
+
           <button
-            className={`absolute top-0 left-0 m-2 p-2 rounded-full ${
-              isFavorite ? "text-red-500" : "text-white"
+            className={`absolute top-0 right-0 m-2 p-2 rounded-full ${
+              product?.isFavorite ? 'text-orange-500' : 'text-slate-500'
             }`}
+            onClick={() => onToggleFavorite(id)}
           >
             <svg
               className="w-6 h-6 fill-current"
@@ -51,24 +80,56 @@ const CardDetail = () => {
             </svg>
           </button>
           <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">{product?.title}</div>
-            <p className="text-gray-600 text-sm mb-2">{product?.description}</p>
-            <p className="text-gray-600 text-sm mb-2">{product?.category}</p>
+            <p className="text-gray-600 text-lg mb-2">{product?.description}</p>
+            <p className="text-gray-600 text-base mb-2">{product?.category}</p>
             {product?.rating && (
-              <div className="text-yellow-500 mb-2">
-                {"★".repeat(Math.floor(product?.rating)) +
-                  "☆".repeat(5 - Math.floor(product?.rating))}
+              <div className="text-orange-500 mb-2">
+                {'★'.repeat(Math.floor(product?.rating)) +
+                  '☆'.repeat(5 - Math.floor(product?.rating))}
               </div>
             )}
-            <div className="text-lg font-bold mb-2">{product?.price}$</div>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-              Add to Cart
+            {/* <div className="text-lg font-bold mb-2">{product?.card} Р</div> */}
+            {product.category === 'Акции' ? (
+              <>
+                <div className="flex justify-between mb-2  ">
+                  <p className="flex flex-col">
+                    {product.card} Р<span>С картой</span>
+                  </p>
+                  <p className="flex flex-col">
+                    {product.regular} Р<span>Обычная</span>
+                  </p>
+                </div>
+              </>
+            ) : (
+              <div className="text-lg font-bold mb-2">{product?.regular} Р</div>
+            )}
+
+            <button
+              onClick={handleAddToCart}
+              className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full"
+            >
+              В корзину
             </button>
           </div>
         </div>
       </div>
-    </section>
-  );
-};
 
-export default CardDetail;
+      {/* <Alert
+        title={alertState?.title}
+        subtitle={alertState?.subtitle}
+        variant="neutral"
+        isOpen={alertState?.isOpen}
+        onClose={() => setAlertState(!alertState?.isOpen)}
+      /> */}
+
+      <Alert
+        variant="neutral"
+        subtitle={alertState?.message}
+        isOpen={alertState?.isOpen}
+        onClose={handleCloseAlert}
+      />
+    </section>
+  )
+}
+
+export default CardDetail

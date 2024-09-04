@@ -32,7 +32,7 @@ export const Card = (props) => {
     isFavorite,
   } = props.details
 
-  const { onHeartClick } = props
+  const { onCardClick, onHeartClick } = props
 
   // Стейт для скрытия/показа и передачи сообщения в Alert
   const [alertState, setAlertState] = useState({
@@ -54,6 +54,11 @@ export const Card = (props) => {
     onHeartClick && onHeartClick(id)
   }
 
+  // Обработчик клика по карточке
+  const handleCardClick = () => {
+    onCardClick && onCardClick(id)
+  }
+
   // Обработчик добавления товара в корзину
   const handleAddToCart = () => {
     // Находим карточку по id.
@@ -67,7 +72,7 @@ export const Card = (props) => {
 
   return (
     <>
-      <div className={styles['card-products']}>
+      <div onClick={handleCardClick} className={styles['card-products']}>
         <div className={styles['pic-wrap']}>
           <img src={imgSrc} alt={title} />
           <button
