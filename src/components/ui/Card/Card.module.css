@@ -1,0 +1,141 @@
+.cards-flex-wraper {
+  display: flex;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.card-products {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffff;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  max-width: 272px;
+  cursor: pointer;
+}
+
+.pic-wrap {
+  position: relative;
+}
+
+.btn-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 4px;
+  background: rgb(243, 242, 241);
+  opacity: 0.5;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.discount {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  border-radius: 4px;
+  background: rgb(255, 102, 51);
+  padding: 4px 8px 4px 8px;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.card-description {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.price-wrap {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+
+.price-flex-column-card {
+  display: flex;
+  flex-direction: column;
+  color: rgb(65, 65, 65);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.price-desc-card {
+  color: rgb(191, 191, 191);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.price-flex-column-regular {
+  display: flex;
+  flex-direction: column;
+  color: rgb(96, 96, 96);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.price-desc-regular {
+  color: rgb(191, 191, 191);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.card-title {
+  color: rgb(65, 65, 65);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.card-rating {
+  border-radius: 1px;
+  color: rgb(255, 102, 51);
+}
+
+.rating-wrap {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.card-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 100%;
+  background-color: #70c05b;
+  color: #ffff;
+}
+
+.cards-button-list {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background-color: transparent;
+  border: none;
+  color: #606060;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.btn-icon-active {
+  background: #f63;
+  opacity: 0.8;
+}
+
+.btn-icon-active svg path {
+  stroke: #fff;
+}

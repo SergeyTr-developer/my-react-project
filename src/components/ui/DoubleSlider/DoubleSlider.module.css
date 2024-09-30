@@ -1,0 +1,30 @@
+.doubleSlider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 24px;
+  width: 100%;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+  box-sizing: border-box;
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 2px 4px 8px 0px rgba(112, 192, 91, 0.2);
+  background-color: rgb(112, 192, 91);
+}
+
+.line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #4caf50;
+  border-radius: 2px;
+  z-index: 0;
+}

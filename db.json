@@ -1,0 +1,309 @@
+{
+  "products": [
+    {
+      "id": "0",
+      "name": " Блинчики ",
+      "category": "Акции",
+      "description": "Г/Ц Блинчики с мясом вес, Россия",
+      "rating": "2",
+      "card": "44.50",
+      "regular": "50.50",
+      "imgSrc": "../assets/products/блинчики с мясом.svg",
+      "isFavorite": true,
+      "quantity": 1
+    },
+    {
+      "id": "1",
+      "name": "Молоко",
+      "category": "Акции",
+      "description": "Молоко ПРОСТОКВАШИНО паст. питьевое цельное отборное...",
+      "rating": "3",
+      "card": "44.50",
+      "regular": "50.50",
+      "imgSrc": "../assets/products/молоко ПРОСТОКВАШИНО.svg",
+      "isFavorite": true,
+      "quantity": 1
+    },
+    {
+      "id": "2",
+      "name": "Колбаса",
+      "category": "Акции",
+      "description": "Колбаса сырокопченая МЯСНАЯ ИСТОРИЯ Сальчичон и Тоскан...",
+      "rating": "5",
+      "card": "44.50",
+      "regular": "50.50",
+      "imgSrc": "../assets/products/колбаса сырокопченая.svg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "3",
+      "name": "Сосиски",
+      "category": "Акции",
+      "description": "Сосиски вареные МЯСНАЯ ИСТОРИЯ Молочные и С сыро...",
+      "rating": "4",
+      "card": "44.50",
+      "regular": "50.50",
+      "imgSrc": "../assets/products/сосиски вареные.svg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "4",
+      "name": "Колбаса премиум",
+      "category": "Новинки",
+      "description": "Колбаса сырокопченая, Черкизово премиум",
+      "rating": "2",
+      "card": "",
+      "regular": "599.99",
+      "imgSrc": "../assets/products/колбаса черкизово премиум.svg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "5",
+      "name": "Колбаса",
+      "category": "Новинки",
+      "description": "Колбаса сырокопченая МЯСНАЯ ИСТОРИЯ Сальчичон и Тоскан...",
+      "rating": "5",
+      "card": "",
+      "regular": "50.50",
+      "imgSrc": "../assets/products/колбаса сырокопченая.svg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "6",
+      "name": "Сосиски",
+      "category": "Новинки",
+      "description": "Сосиски вареные МЯСНАЯ ИСТОРИЯ Молочные и С сыро...",
+      "rating": "4",
+      "card": "",
+      "regular": "159.99",
+      "imgSrc": "../assets/products/сосиски вареные.svg",
+      "isFavorite": true,
+      "quantity": 1
+    },
+    {
+      "id": "7",
+      "name": "Молоко",
+      "category": "Новинки",
+      "description": "Молоко ПРОСТОКВАШИНО паст. питьевое цельное отборное...",
+      "rating": "3",
+      "card": "",
+      "regular": "50.50",
+      "imgSrc": "../assets/products/молоко ПРОСТОКВАШИНО.svg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "8",
+      "name": "Ветчина",
+      "category": "Популярные товары",
+      "description": "Ветчина Питерская,  ОТБОРНЫЕ ПРОДУКТЫ",
+      "rating": "2",
+      "card": "",
+      "regular": "77.99",
+      "imgSrc": "../assets/products/ветчина питерская.svg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "9",
+      "name": "Сосиски",
+      "category": "Популярные товары",
+      "description": "Сосиски вареные МЯСНАЯ ИСТОРИЯ Молочные и С сыро...",
+      "rating": "4",
+      "card": "",
+      "regular": "159.99",
+      "imgSrc": "../assets/products/сосиски вареные.svg",
+      "isFavorite": true,
+      "quantity": 1
+    },
+    {
+      "id": "10",
+      "name": "Колбаса премиум",
+      "category": "Популярные товары",
+      "description": "Колбаса сырокопченая, Черкизово премиум",
+      "rating": "2",
+      "card": "",
+      "regular": "599.99",
+      "imgSrc": "../assets/products/колбаса черкизово премиум.svg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "11",
+      "name": "Молоко",
+      "category": "Популярные товары",
+      "description": "Молоко ПРОСТОКВАШИНО паст. питьевое цельное отборное...",
+      "rating": "3",
+      "card": "",
+      "regular": "50.50",
+      "imgSrc": "../assets/products/молоко ПРОСТОКВАШИНО.svg",
+      "isFavorite": true,
+      "quantity": 1
+    },
+    {
+      "id": "4de6",
+      "name": "Хлеб",
+      "category": "Акции",
+      "description": "Хлеб Чиабатта ржаная, 100 г",
+      "card": "34.98",
+      "regular": "46.33",
+      "rating": "4",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/52/119/52119.webp",
+      "quantity": 1
+    },
+    {
+      "id": "e4fa",
+      "name": "Кофе",
+      "category": "Новинки",
+      "description": "Кофе натуральный «Черная Карта» растворимый, 47 г",
+      "card": "",
+      "regular": "149.99",
+      "rating": "5",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/48/752/48752.webp",
+      "quantity": 1
+    },
+    {
+      "id": "cc74",
+      "name": "Конфеты ",
+      "category": "Популярные товары",
+      "description": "Конфеты «Toffifee» с орехом, 125 г",
+      "card": "",
+      "regular": "149.99",
+      "rating": "5",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/49/358/49358.webp",
+      "quantity": 1
+    },
+    {
+      "name": "Спред",
+      "category": "Акции",
+      "description": "Спред растительно-жировой 72.5% «Сливочный Вкус», 180 г",
+      "card": "",
+      "regular": "35.99",
+      "rating": "",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/46/187/46187.webp",
+      "quantity": 1,
+      "id": "12ab"
+    },
+    {
+      "name": "Снеки",
+      "category": "Новинки",
+      "description": "Снеки-хлебцы «NutVill» льняные «Со вкусом сыра», 70 г",
+      "card": "",
+      "regular": "89.99",
+      "rating": "5",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/49/837/49837.webp",
+      "quantity": 1,
+      "id": "9a65"
+    },
+    {
+      "name": "Пюре фруктовое",
+      "category": "Новинки",
+      "description": "Пюре фруктовое «Дары Кубани» Фруктовый салатик, 90 г",
+      "card": "",
+      "regular": "37",
+      "rating": "",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/44/371/44371.webp",
+      "quantity": 1,
+      "id": "5bd0"
+    },
+    {
+      "name": "Вафельный сэндвич",
+      "category": "Новинки",
+      "description": "Вафельный сэндвич «Яшкино» с какао и молочной начинкой, 168 г",
+      "card": "",
+      "regular": "82.97",
+      "rating": "4",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/47/353/47353.webp",
+      "quantity": 1,
+      "id": "6ae2"
+    },
+    {
+      "id": "f056",
+      "name": "Тропическая смесь",
+      "category": "Новинки",
+      "description": "Тропическая смесь «Good fruit» манго, ананас, маракуйя, 300 г",
+      "card": "",
+      "regular": "147.99",
+      "rating": "5",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/50/014/50014.webp",
+      "quantity": 1
+    },
+    {
+      "id": "729e",
+      "name": "Кешью",
+      "category": "Популярные товары",
+      "description": "Кешью «Nut Story» жареный, 150 г",
+      "card": "",
+      "regular": "289.99",
+      "rating": "5",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/49/703/49703.webp",
+      "quantity": 1
+    },
+    {
+      "id": "68bf",
+      "name": "Сухарики",
+      "category": "Новинки",
+      "description": "Сухарики «Кириешки Light» Семга с сыром, 80 г",
+      "card": "",
+      "regular": "26.99",
+      "rating": "5",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/52/472/52472.webp",
+      "quantity": 1
+    },
+    {
+      "id": "d6bf",
+      "name": "Драже фруктовые",
+      "category": "Акции",
+      "description": "Драже фруктовые «Skittles» Кисломикс, 70 г",
+      "card": "60.99",
+      "regular": "89.99",
+      "rating": "5",
+      "imgSrc": "https://api.yarcheplus.ru/thumbnail/768x768/47/502/47502.webp",
+      "quantity": 1
+    },
+    {
+      "id": "1681",
+      "name": "Торт Бенто",
+      "category": "Новинки",
+      "description": "Торт Бенто Фисташковый с Малиной 500г",
+      "card": "",
+      "regular": "699.00",
+      "rating": "4",
+      "imgSrc": "https://s.myspar.ru/upload/resize_cache/img/10/1014/bcbc5cf022fc52f242999bb3a3f42a1c/101413576.webp?1723235336",
+      "quantity": 1
+    },
+    {
+      "id": "28c9",
+      "name": "Батончик мюсли",
+      "category": "Акции",
+      "description": "Батончик мюсли FITNESS злаковый шоколад-банан,витамины, 24штx23.5...",
+      "card": "70",
+      "regular": "90",
+      "rating": "4",
+      "imgSrc": "https://komus-opt.ru/upload/iblock/bf2/1355932_002_10.jpg",
+      "quantity": 1
+    }
+  ],
+  "users": [
+    {
+      "id": "1f06",
+      "phone": "+7(908) 125-53-66",
+      "surname": "Труфанов",
+      "name": "Сергей",
+      "password": "12345678",
+      "role": "admin"
+    },
+    {
+      "id": "f2e6",
+      "phone": "+7(919) 136-36-79",
+      "surname": "Васильев",
+      "name": "Вася",
+      "password": "98765432",
+      "role": "user"
+    }
+  ]
+}

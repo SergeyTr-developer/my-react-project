@@ -1,0 +1,140 @@
+header {
+  box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.1);
+  background-color: #ffff;
+  position: relative;
+  z-index: 11;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(65, 65, 65);
+}
+
+.header-flex-wraper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 72px;
+  gap: 40px;
+}
+
+.logo-flex {
+  display: flex;
+  gap: 40px;
+}
+
+.catalog-flex {
+  display: flex;
+  flex-grow: 1;
+  gap: 16px;
+}
+
+.catalog-btn_menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(112, 192, 91);
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.mr-8 {
+  margin: 0px 8px;
+}
+.pl-16 {
+  padding-left: 16px;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: 1px solid rgb(112, 192, 91);
+  border-radius: 4px;
+  padding: 8px;
+  flex-grow: 1;
+}
+
+.search__input {
+  /* color: rgb(143, 143, 143); */
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+  outline: none;
+}
+
+.search-btn-icon {
+  border: none;
+  background-color: #ffff;
+}
+
+.flex-wraper-button {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.list-items-flex {
+  display: flex;
+  gap: 24px;
+}
+
+.list-items-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background-color: #ffff;
+  color: rgb(65, 65, 65);
+  font-size: 12px;
+  font-weight: 400;
+  position: relative;
+}
+
+.list-items-btn:hover {
+  color: #f63;
+}
+
+.favorites-counter {
+  position: absolute;
+  top: -3px;
+  right: 15px;
+  background-color: #f63;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 4px;
+  line-height: 14px;
+  border-radius: 18px;
+  border: 2px solid #fff;
+}
+
+.btn-icon-active svg path {
+  stroke: #fff;
+}
+
+.authorization-flex {
+  display: flex;
+  gap: 32px;
+}
+
+.authorization-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 100%;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 8px;
+  font-style: italic;
+  background-color: #f63;
+  color: #fff;
+}
